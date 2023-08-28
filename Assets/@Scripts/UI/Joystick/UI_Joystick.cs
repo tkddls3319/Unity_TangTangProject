@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UI_Joystick : UI_Base, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-
     enum Images
     {
         BG,
@@ -21,7 +20,6 @@ public class UI_Joystick : UI_Base, IPointerClickHandler, IPointerDownHandler, I
     float _joustickRadius;
     Vector2 _touchPosition;
     Vector2 _moveDir;
-
 
     public override bool Init()
     {
@@ -48,6 +46,7 @@ public class UI_Joystick : UI_Base, IPointerClickHandler, IPointerDownHandler, I
         Vector2 newPosition = _touchPosition + _moveDir * moveDist;
         _handler.transform.position = newPosition;
 
+        Managers.Game.MoveDir = _moveDir;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -66,6 +65,6 @@ public class UI_Joystick : UI_Base, IPointerClickHandler, IPointerDownHandler, I
         _handler.transform.position = _touchPosition;
         _moveDir = Vector2.zero;
 
-
+        Managers.Game.MoveDir = _moveDir;
     }
 }

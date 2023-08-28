@@ -26,9 +26,11 @@ public class Managers : MonoBehaviour
     }
 
     #region Contentes
+    GameManager _game = new();
     ObjectManager _object = new();
     PoolManager _pool = new();
 
+    public static GameManager Game { get { return Instance?._game; } }
     public static ObjectManager Object { get { return Instance?._object; } }
     public static PoolManager Pool { get { return Instance?._pool; } }
     #endregion

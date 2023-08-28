@@ -7,7 +7,8 @@ using UnityEngine;
 public class UIManager
 {
     int _order = 20;
-    public UI_Scene SceneUI { get; set; }
+    public UI_Scene SceneUI { get; private set; }
+    public UI_Base JoystickUI { get; private set; }
     Stack<UI_Popup> _popups;
 
     public GameObject Root
@@ -38,6 +39,11 @@ public class UIManager
             canvas.sortingOrder = 0;
         }
     }
+    public void ShowJoyStick()
+    {
+        GameObject go = Managers.Resource.Instantiate($"UI_Joystick.prefab");
+    }
+
     public void ShowSceneUI<T>(string key = null) where T : UI_Scene
     {
         if (string.IsNullOrEmpty(key))

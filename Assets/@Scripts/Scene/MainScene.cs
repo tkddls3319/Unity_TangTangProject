@@ -17,6 +17,11 @@ public class MainScene : MonoBehaviour
 
     void StartLoaded()
     {
+        Managers.Object.Spawn<PlayerController>(Vector3.zero);
 
+        Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+        Managers.Object.Spawn<MonsterController>(randPos,1);
+
+        Managers.UI.ShowJoyStick();
     }
 }

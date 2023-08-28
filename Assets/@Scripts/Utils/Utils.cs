@@ -23,10 +23,8 @@ public class Utils
                     return componenet;
             }
         }
-
         return null;
     }
-
 
     public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
@@ -37,4 +35,5 @@ public class Utils
 
         return null;
     }
+    
 }
