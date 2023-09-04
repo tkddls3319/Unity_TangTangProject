@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Skills
+  m_EditorClassIdentifier: 
+  m_GroupName: Skills
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 217f6adb6f2e9a348b36f2f5e14aa916
+  m_SerializeEntries:
+  - m_GUID: 93ae0fb8029fb924f955e9b2dc435098
+    m_Address: waveform1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 22180f5b4f9399645ba5404eb62cfb65
+    m_Address: spark-preview1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 38538f9d247e80d4db11405d39f4fcd0
+    m_Address: pulse1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 147c86fda84dcf649b164c5982671a56
+    m_Address: hits-6-preview1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: d7b57552f9a927d47bb06a8ec8f36f9a
+    m_Address: hits-5-1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: e35e512272f0608438ab68c46735f8b8
+    m_Address: hits-4-1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 25b3715f850b7eb40bfa49d6ce2496aa
+    m_Address: hits-3-1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 31455e68db179cc4c9c6cf261a935bbe
+    m_Address: hits-2-1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 91658e3c0f77c4c469f4dad328dec3d2
+    m_Address: hits-1-1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 3982ecb3ed7ff6c4c88cad5aa0ed05c4
+    m_Address: crossed1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 41825272f81e9a74e96d32e6181bea8a
+    m_Address: charged1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 24715bffe89e2754b87abc5f18fb8321
+    m_Address: bullets_0.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: ddbe2ec7f8d10c645998b9c95c0327c1
+    m_Address: bolt1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cf6b4dda2af5c8f4c98864a988628d2b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7e9ef6ce7b3402646ae564279f540b08, type: 2}
+    - {fileID: 11400000, guid: 8892b7453ded9944ca368c96b17e51e5, type: 2}

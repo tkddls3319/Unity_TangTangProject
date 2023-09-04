@@ -14,7 +14,6 @@ public class SkillController : BaseController
         SkillDestory();
         _coDestroy = StartCoroutine(CoDestroy(lifeTime));
     }
-
     public void SkillDestory()
     {
         if (_coDestroy != null)
@@ -23,7 +22,6 @@ public class SkillController : BaseController
             _coDestroy = null;
         }
     }
-
     IEnumerator CoDestroy(float lifeTime)
     {
         yield return new WaitForSeconds(lifeTime);
@@ -33,5 +31,4 @@ public class SkillController : BaseController
             Managers.Object.Dspawn(this);
         }
     }
-
 }

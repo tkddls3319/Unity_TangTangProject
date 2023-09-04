@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainScene : MonoBehaviour
 {
+    SpawningPool _spawningPool;
     void Start()
     {
         Managers.Resource.LoadAllAsync<Object>("LoadPrefab", (key, count, totalCount) =>
         {
             if (count == totalCount)
-            {
                 StartLoaded();
-            }
         });
     }
 
     void StartLoaded()
     {
-        Managers.Object.Spawn<PlayerController>(Vector3.zero);
+        PlayerController player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
+        _spawningPool = gameObject.GetOrAddComponent<SpawningPool>();
 
-        Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
-        Managers.Object.Spawn<MonsterController>(randPos,1);
+        Camera.main.GetOrAddComponent<CameraController>().Target = player.gameObject;
 
         Managers.UI.ShowJoyStick();
     }

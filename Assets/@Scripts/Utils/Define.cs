@@ -19,4 +19,27 @@ public static class Define
         Enter,
         Exit
     }
+
+    public enum Exp
+    {
+        ExpBronze,
+        ExpSilver,
+        ExpGold,
+    }
+
+    public enum Projectile
+    {
+        Bolt,
+        Charged,
+        Crossed,
+        Hits1,
+        Hits2,
+        Hits3,
+        Hits4,
+        Hits5,
+        Hits6,
+        Pulse,
+        Spark,
+        WaveForm,
+    }
 }

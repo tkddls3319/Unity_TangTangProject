@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -20,16 +21,20 @@ public class Managers : MonoBehaviour
                 }
                 DontDestroyOnLoad(go);
                 s_instance = go.GetComponent<Managers>();
+
+                Instance?._data.Init();
             }
             return s_instance;
         }
     }
 
     #region Contentes
+    DataManager _data = new();
     GameManager _game = new();
     ObjectManager _object = new();
     PoolManager _pool = new();
 
+    public static DataManager Data { get { return Instance?._data; } }
     public static GameManager Game { get { return Instance?._game; } }
     public static ObjectManager Object { get { return Instance?._object; } }
     public static PoolManager Pool { get { return Instance?._pool; } }
@@ -45,14 +50,4 @@ public class Managers : MonoBehaviour
     public static UIManager UI { get { return Instance?._ui; } }
     #endregion
 
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

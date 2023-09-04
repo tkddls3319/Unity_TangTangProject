@@ -17,12 +17,14 @@ public class PlayerController : CreatureController
 
     Transform _indicator;
     Transform _fireSocket;
+
+    public Define.Projectile SkillID { get; set; } = Define.Projectile.Hits1; 
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
 
-        _speed = 5.0f;
+        Data = new CreatureData(1000, 1000, 5.0f, 0, 9999);
 
         Managers.Game.OnMoveDir -= HandleOnMoveChange;
         Managers.Game.OnMoveDir += HandleOnMoveChange;
@@ -31,7 +33,6 @@ public class PlayerController : CreatureController
 
         _indicator = Utils.FindChild<Transform>(gameObject, "Indicator");
         _fireSocket = Utils.FindChild<Transform>(_indicator.gameObject, "FireSocket");
-
 
         StartProjectTile();
 
@@ -49,7 +50,7 @@ public class PlayerController : CreatureController
 
     void MovePlayer()
     {
-        Vector3 dir = _moveDir * _speed * Time.deltaTime;
+        Vector3 dir = _moveDir * Data.Speed * Time.deltaTime;
         transform.position += dir;
 
         if (_moveDir != Vector2.zero)
@@ -79,13 +80,12 @@ public class PlayerController : CreatureController
        
         while (true)
         {
-            ProjectileController pc = Managers.Object.Spawn<ProjectileController>(_fireSocket.position, 1);
-            pc.SetInfo(this, (_fireSocket.position - _indicator.position).normalized, 50.0f, 10);
+            ProjectileController pc = Managers.Object.Spawn<ProjectileController>(_fireSocket.position, (int)SkillID);
+            pc.SetInfo(this, (_fireSocket.position - _indicator.position).normalized, 50.0f, 1);
 
             yield return wait;
         }
     }
-
 
     private void OnDestroy()
     {

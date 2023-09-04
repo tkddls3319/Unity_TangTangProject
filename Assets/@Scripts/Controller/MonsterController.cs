@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class MonsterController : CreatureController
 {
-
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
 
-        _speed = 3.0f;
 
         return true;
     }
@@ -23,7 +21,7 @@ public class MonsterController : CreatureController
             return;
 
         Vector3 dir = pc.transform.position - transform.position;
-        Vector3 nextPos = transform.position  + dir.normalized * Time.deltaTime * _speed;
+        Vector3 nextPos = transform.position + dir.normalized * Time.deltaTime * Data.Speed;
 
         GetComponent<Rigidbody2D>().MovePosition(nextPos);
         GetComponent<SpriteRenderer>().flipX = dir.x > 0;
@@ -33,6 +31,7 @@ public class MonsterController : CreatureController
     {
         base.OnDead();
 
+        ExpController exp = Managers.Object.Spawn<ExpController>(transform.position);
         Managers.Object.Dspawn(this);
     }
 }

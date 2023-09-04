@@ -32,8 +32,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
-  - m_GUID: 24715bffe89e2754b87abc5f18fb8321
-    m_Address: bullets_0.prefab
+  - m_GUID: 3eb14cc8d99326147b3911092b101c9d
+    m_Address: Exp.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -14,5 +15,23 @@ public class SkillData
         Id = id;
         Damage = damage;
         LifeTime = lifeTime;
+    }
+}
+
+public class CreatureData
+{
+    public int MaxHp;
+    public int Hp;
+    public float Speed;
+    public int MaxExp;
+    public int Exp;
+
+    public CreatureData(int maxHp, int hp, float speed, int maxExp, int exp)
+    {
+        MaxHp = maxHp;
+        Hp = hp;
+        Speed = speed;
+        MaxExp = maxExp;
+        Exp = exp;
     }
 }
