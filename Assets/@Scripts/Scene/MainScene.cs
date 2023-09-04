@@ -23,5 +23,6 @@ public class MainScene : MonoBehaviour
         Camera.main.GetOrAddComponent<CameraController>().Target = player.gameObject;
 
         Managers.UI.ShowJoyStick();
+        Managers.UI.ShowSceneUI<UI_SkillClickScene>();
     }
 }

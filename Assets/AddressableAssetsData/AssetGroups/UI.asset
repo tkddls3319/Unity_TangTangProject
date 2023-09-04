@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
+  - m_GUID: 49336ef3d6f6d9b44b96d7c80ba37f5e
+    m_Address: UI_SkillClickScene.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cf6b4dda2af5c8f4c98864a988628d2b, type: 2}
   m_SchemaSet:

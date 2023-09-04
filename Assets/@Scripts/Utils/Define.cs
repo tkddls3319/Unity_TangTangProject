@@ -29,6 +29,7 @@ public static class Define
 
     public enum Projectile
     {
+        Bullets,
         Bolt,
         Charged,
         Crossed,
