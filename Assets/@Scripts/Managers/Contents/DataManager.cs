@@ -13,7 +13,7 @@ public class DataManager
         SkillData sd = new SkillData(1, 10, 1.0f);
         SkillData.Add(1, sd);
 
-        CreatureData jombe = new CreatureData(20, 20, 2.0f, 10, 0);
+        CreatureData jombe = new CreatureData(20, 20, 20, 2.0f, 10, 0);
         MonsterDatas.Add(0, jombe);
     }
 }

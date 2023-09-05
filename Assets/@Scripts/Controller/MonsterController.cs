@@ -34,4 +34,15 @@ public class MonsterController : CreatureController
         ExpController exp = Managers.Object.Spawn<ExpController>(transform.position);
         Managers.Object.Dspawn(this);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        PlayerController pc = collision.GetComponent<PlayerController>();
+        if (pc == null)
+            return;
+
+        pc.OnDamaged(this, Data.Damage);
+
+    }
 }

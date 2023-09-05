@@ -11,6 +11,6 @@ public class CameraController : MonoBehaviour
         if (Target == null)
             return;
 
-        transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, -10);
+        transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y, -30);
     }
 }

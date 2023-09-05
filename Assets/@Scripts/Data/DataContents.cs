@@ -20,14 +20,16 @@ public class SkillData
 
 public class CreatureData
 {
+    public int Damage;
     public int MaxHp;
     public int Hp;
     public float Speed;
     public int MaxExp;
     public int Exp;
 
-    public CreatureData(int maxHp, int hp, float speed, int maxExp, int exp)
+    public CreatureData(int damage, int maxHp, int hp, float speed, int maxExp, int exp)
     {
+        Damage = damage;
         MaxHp = maxHp;
         Hp = hp;
         Speed = speed;

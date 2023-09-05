@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : CreatureController
@@ -18,7 +19,7 @@ public class PlayerController : CreatureController
             return false;
      
 
-        Data = new CreatureData(1000, 1000, 5.0f, 0, 9999);
+        Data = new CreatureData(20, 1000, 1000, 5.0f, 0, 9999);
 
         Managers.Game.OnMoveDir -= HandleOnMoveChange;
         Managers.Game.OnMoveDir += HandleOnMoveChange;
@@ -38,16 +39,18 @@ public class PlayerController : CreatureController
         switch (Status)
         {
             case Define.CreatureState.Idle:
-                _animator.Play("idle_down");
+                _animator.Play("IDLE");
                 break;
             case Define.CreatureState.Moving:
-                _animator.Play("walk_side");
+                _animator.Play("MOVE");
                 break;
             case Define.CreatureState.Skill:
                 break;
             case Define.CreatureState.Hit:
+                _animator.Play("HIT");
                 break;
             case Define.CreatureState.Dead:
+                _animator.Play("DEAD");
                 break;
         }
     }
@@ -59,7 +62,8 @@ public class PlayerController : CreatureController
     private void HandleOnMoveChange(Vector2 dir)
     {
         _moveDir = dir;
-        Status = Define.CreatureState.Moving;
+        if(Status != Define.CreatureState.Hit)
+          Status = Define.CreatureState.Moving;
     }
 
     void MovePlayer()
@@ -73,12 +77,16 @@ public class PlayerController : CreatureController
         }
         else
         {
-            Status = Define.CreatureState.Idle;
-
+            if(Status != Define.CreatureState.Idle)
+              Status = Define.CreatureState.Idle;
         }
 
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         GetComponent<SpriteRenderer>().flipX = dir.x > 0;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Status = Define.CreatureState.Idle;
     }
 
     #region Projeectile

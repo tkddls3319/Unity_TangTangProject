@@ -35,7 +35,7 @@ public class CreatureController : BaseController
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         Data.Hp -= damage;
-
+        Status = Define.CreatureState.Hit;
         if (Data.Hp <= 0)
         {
             Data.Hp = 0;
@@ -45,7 +45,7 @@ public class CreatureController : BaseController
 
     protected virtual void OnDead()
     {
-        //TODO : Á×¾úÀ»¶§.
+        Status = Define.CreatureState.Dead;
     }
 
 }
