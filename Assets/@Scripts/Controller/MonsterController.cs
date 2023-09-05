@@ -24,7 +24,7 @@ public class MonsterController : CreatureController
         Vector3 nextPos = transform.position + dir.normalized * Time.deltaTime * Data.Speed;
 
         GetComponent<Rigidbody2D>().MovePosition(nextPos);
-        GetComponent<SpriteRenderer>().flipX = dir.x > 0;
+        GetComponent<SpriteRenderer>().flipX = dir.x < 0;
     }
 
     protected override void OnDead()

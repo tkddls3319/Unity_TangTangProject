@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class PlayerController : CreatureController
 {
-    enum Status
-    {
-        Idle,
-        Move,
-        Attack,
-        Skill,
-    }
 
     Vector2 _moveDir = Vector2.zero;
 
@@ -23,6 +16,7 @@ public class PlayerController : CreatureController
     {
         if (base.Init() == false)
             return false;
+     
 
         Data = new CreatureData(1000, 1000, 5.0f, 0, 9999);
 
@@ -38,6 +32,25 @@ public class PlayerController : CreatureController
 
         return true;
     }
+
+    public override void UpdateAnimation()
+    {
+        switch (Status)
+        {
+            case Define.CreatureState.Idle:
+                _animator.Play("idle_down");
+                break;
+            case Define.CreatureState.Moving:
+                _animator.Play("walk_side");
+                break;
+            case Define.CreatureState.Skill:
+                break;
+            case Define.CreatureState.Hit:
+                break;
+            case Define.CreatureState.Dead:
+                break;
+        }
+    }
     public override void UpdateController()
     {
         MovePlayer();
@@ -46,6 +59,7 @@ public class PlayerController : CreatureController
     private void HandleOnMoveChange(Vector2 dir)
     {
         _moveDir = dir;
+        Status = Define.CreatureState.Moving;
     }
 
     void MovePlayer()
@@ -57,8 +71,14 @@ public class PlayerController : CreatureController
         {
             _indicator.eulerAngles = new Vector3(0, 0, MathF.Atan2(-dir.x, dir.y) * 180 / MathF.PI);
         }
+        else
+        {
+            Status = Define.CreatureState.Idle;
+
+        }
 
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        GetComponent<SpriteRenderer>().flipX = dir.x > 0;
     }
 
     #region Projeectile

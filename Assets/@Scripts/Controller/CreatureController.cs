@@ -1,17 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class CreatureController : BaseController
 {
+    Define.CreatureState _status = Define.CreatureState.Idle;
 
+    public Define.CreatureState Status
+    {
+        get { return _status; }
+        set
+        {
+            _status = value;
+            UpdateAnimation();
+        }
+    }
     public CreatureData Data { get; set; }
+
+    protected Animator _animator;
+
+    public override bool Init()
+    {
+        if (base.Init() == false)
+            return false;
+
+        _animator = gameObject.GetComponent<Animator>();
+
+        return true;
+    }
+
+    public virtual void UpdateAnimation() { }
 
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         Data.Hp -= damage;
 
-        if(Data.Hp <= 0)
+        if (Data.Hp <= 0)
         {
             Data.Hp = 0;
             OnDead();

@@ -43,4 +43,12 @@ public static class Define
         Spark,
         WaveForm,
     }
+    public enum CreatureState
+    {
+        Idle,
+        Moving,
+        Skill,
+        Hit,
+        Dead,
+    }
 }
