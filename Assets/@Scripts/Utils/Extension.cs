@@ -11,12 +11,12 @@ public static class Extension
         UI_Base.BindEvent(go, action, type);  
     }
 
-    public static bool IsNotNullActive(this GameObject go)
+    public static bool IsMyNotNullActive(this GameObject go)
     {
         return go != null && go.activeSelf;
     }
 
-    public static bool IsNotNullActive(this BaseController bc)
+    public static bool IsMyNotNullActive(this BaseController bc)
     {
         return bc != null && bc.isActiveAndEnabled;
     }

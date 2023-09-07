@@ -12,14 +12,18 @@ public class PlayerController : CreatureController
     Transform _indicator;
     Transform _fireSocket;
 
-    public Define.Projectile SkillID { get; set; } = Define.Projectile.Hits1; 
+    public Vector3 PlayerCenterPos { get { return _indicator.transform.position; } }
+
+    public Define.Projectile SkillID { get; set; } = Define.Projectile.Hits1;
+
+    public float _ItemCollecRange { get; } = 4.0f;
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
      
 
-        Data = new CreatureData(20, 1000, 1000, 5.0f, 0, 9999);
+        Data = new CreatureData(5, 1000, 1000, 5.0f, 0, 9999);
 
         Managers.Game.OnMoveDir -= HandleOnMoveChange;
         Managers.Game.OnMoveDir += HandleOnMoveChange;
@@ -33,7 +37,6 @@ public class PlayerController : CreatureController
 
         return true;
     }
-
     public override void UpdateAnimation()
     {
         switch (Status)
@@ -57,6 +60,27 @@ public class PlayerController : CreatureController
     public override void UpdateController()
     {
         MovePlayer();
+        CollectionItem();
+    }
+
+    void CollectionItem()
+    {
+      var items =  Managers.Game.Ground.GetObjectList(transform.position, _ItemCollecRange);
+
+        foreach (DropItemController item in items)
+        {
+            Vector3 dir = item.transform.position - transform.position;
+
+            if(item.ItemType == Define.ObjectType.Exp)
+            {
+                float cd = item.CollectDist * 1;
+                if (dir.sqrMagnitude <= cd * cd)
+                {
+                    item.GetItem();
+                }
+                break;
+            }
+        }
     }
 
     private void HandleOnMoveChange(Vector2 dir)

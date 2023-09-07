@@ -18,17 +18,17 @@ MonoBehaviour:
   m_GUID: c5db0d139ca6f4c4ab08a4856ffa2e2a
   m_SerializeEntries:
   - m_GUID: d2c3d4f5ba979554684b23e20524add7
-    m_Address: ExpSilver.sprite
+    m_Address: SilverExp.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: 9c6eeaec3e1da4d4a9c0a2e6e9dcda7a
-    m_Address: ExpGold.sprite
+    m_Address: GoldExp.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: 370bf75cf330a9b4ca0fc7f60c28158a
-    m_Address: ExpBronze.sprite
+    m_Address: BronzeExp.sprite
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

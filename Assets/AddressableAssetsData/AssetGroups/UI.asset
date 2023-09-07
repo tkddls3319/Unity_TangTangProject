@@ -22,8 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
-  - m_GUID: 49336ef3d6f6d9b44b96d7c80ba37f5e
-    m_Address: UI_SkillClickScene.prefab
+  - m_GUID: b89a2795a73e5614aa1061c6f2d78f40
+    m_Address: UI_GameScene.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

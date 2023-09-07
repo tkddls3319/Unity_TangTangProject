@@ -12,6 +12,11 @@ public class ObjectManager
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<ExpController> Exps { get; } = new HashSet<ExpController>();
 
+    public void Init()
+    {
+        
+    }
+
     public T Spawn<T>(Vector3 pos, int id = 0) where T : BaseController
     {
         //TODO : 아이디값에 따라 몬스터 및 아이템 변경
@@ -26,7 +31,7 @@ public class ObjectManager
 
             Player = go.GetOrAddComponent<PlayerController>();
             Player.Init();
-
+            Managers.Game.Player = Player;
             return Player as T;
         }
         else if (type == typeof(MonsterController))
@@ -38,7 +43,12 @@ public class ObjectManager
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
             //TODO : 몬스터 늘어나면 변경
-            mc.Data = Managers.Data.MonsterDatas[0];
+
+            CreatureData data = null;
+            if (Managers.Data.MonsterDatas.TryGetValue(0, out data) == false)
+                return null;
+
+            mc.Data = data.DeepCopy();
             Monsters.Add(mc);
             mc.Init();
 
@@ -107,9 +117,7 @@ public class ObjectManager
             Exps.Add(ec);
             ec.Init();
 
-            string name = (UnityEngine.Random.Range(0, 2) == 0 ? "ExpBronze" : "ExpSilver");
-            Sprite sprite = Managers.Resource.Load<Sprite>($"{name}.sprite");
-            go.GetOrAddComponent<SpriteRenderer>().sprite = sprite;
+            Managers.Game.Ground.Add(ec);
 
             return ec as T;
         }
@@ -119,7 +127,7 @@ public class ObjectManager
 
     public void Dspawn<T>(T obj) where T : BaseController
     {
-        if (obj.gameObject.IsNotNullActive() == false)
+        if (obj.gameObject.IsMyNotNullActive() == false)
             return;
 
         Type type = typeof(T);
@@ -137,6 +145,12 @@ public class ObjectManager
         {
             Projectiles.Remove(obj as ProjectileController);
             Managers.Resource.Destroy(obj.gameObject);
+        }
+        else if (type == typeof(ExpController))
+        {
+            Exps.Remove(obj as ExpController);  
+            Managers.Resource.Destroy(obj.gameObject);
+            Managers.Game.Ground.Remove(obj as ExpController);
         }
     }
 }

@@ -17,12 +17,13 @@ public class MainScene : MonoBehaviour
 
     void StartLoaded()
     {
+
         PlayerController player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
         _spawningPool = gameObject.GetOrAddComponent<SpawningPool>();
 
         Camera.main.GetOrAddComponent<CameraController>().Target = player.gameObject;
 
         Managers.UI.ShowJoyStick();
-        Managers.UI.ShowSceneUI<UI_SkillClickScene>();
+        Managers.UI.ShowSceneUI<UI_GameScene>();
     }
 }

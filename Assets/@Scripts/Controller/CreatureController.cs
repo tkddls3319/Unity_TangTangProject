@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CreatureController : BaseController
 {
-    Define.CreatureState _status = Define.CreatureState.Idle;
+    Define.CreatureState _status = Define.CreatureState.Moving;
 
     public Define.CreatureState Status
     {
@@ -30,12 +30,16 @@ public class CreatureController : BaseController
         return true;
     }
 
-    public virtual void UpdateAnimation() { }
+    public virtual void UpdateAnimation() 
+    {
+    }
 
     public virtual void OnDamaged(BaseController attacker, int damage)
     {
         Data.Hp -= damage;
         Status = Define.CreatureState.Hit;
+
+        //Debug.Log($"{gameObject.name} : {Data.Hp}");
         if (Data.Hp <= 0)
         {
             Data.Hp = 0;

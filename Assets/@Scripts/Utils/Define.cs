@@ -8,7 +8,8 @@ public static class Define
     public enum ObjectType
     {
         Player,
-        Zombe
+        Zombe,
+        Exp
     }
 
     public enum UIEvent

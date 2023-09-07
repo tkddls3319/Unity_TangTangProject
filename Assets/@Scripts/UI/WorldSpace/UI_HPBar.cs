@@ -17,7 +17,7 @@ public class UI_HPBar : UI_Base
             return false;
 
         Bind<GameObject>(typeof(GameObjects));
-        _player = Managers.Object.Player;
+        _player = Managers.Game.Player;
         return true;
     }
 

@@ -14,7 +14,6 @@ public class ProjectileController : SkillController
         if (base.Init() == false)
             return false;
 
-        StartDestroy(1);
         return true;
     }
 
@@ -24,25 +23,32 @@ public class ProjectileController : SkillController
         _moveDir = moveDir;
         _speed = speed;
         _attack = attack;
+
+        StartCoroutine(CoDestroy(5f));
     }
 
     public override void UpdateController()
     {
-        Vector3 nextPos =  transform.position + _moveDir * _speed * Time.deltaTime;
+        Vector3 nextPos = transform.position + _moveDir * _speed * Time.deltaTime;
         GetComponent<Rigidbody2D>().MovePosition(nextPos);
+    }
+
+    IEnumerator CoDestroy(float lifeTime)
+    {
+        yield return new WaitForSeconds(lifeTime);
+        Managers.Object.Dspawn(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         MonsterController mc = collision.gameObject.GetComponent<MonsterController>();
-        if (mc.IsNotNullActive() == false)
+        if (mc.IsMyNotNullActive() == false)
             return;
 
-        if (this.IsNotNullActive() == false)
+        if (this.IsMyNotNullActive() == false)
             return;
 
-        mc.OnDamaged(_master, _attack);
-        SkillDestory();
+        mc.OnDamaged(_master, _attack + _master.Data.Damage);
         Managers.Object.Dspawn(this);
     }
 }

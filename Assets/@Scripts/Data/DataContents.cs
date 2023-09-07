@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Define;
 
 
 public class SkillData
@@ -27,6 +28,9 @@ public class CreatureData
     public int MaxExp;
     public int Exp;
 
+    public CreatureData()
+    {
+    }
     public CreatureData(int damage, int maxHp, int hp, float speed, int maxExp, int exp)
     {
         Damage = damage;
@@ -35,5 +39,17 @@ public class CreatureData
         Speed = speed;
         MaxExp = maxExp;
         Exp = exp;
+    }
+
+    public CreatureData DeepCopy()
+    {
+        CreatureData newCopy = new CreatureData();
+        newCopy.Damage = Damage;
+        newCopy.MaxHp = MaxHp;
+        newCopy.Hp = Hp;
+        newCopy.Speed = Speed;
+        newCopy.MaxExp = MaxExp;
+        newCopy.Exp = Exp;
+        return newCopy;
     }
 }
