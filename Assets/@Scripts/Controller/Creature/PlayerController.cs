@@ -12,17 +12,40 @@ public class PlayerController : CreatureController
     Transform _indicator;
     Transform _fireSocket;
 
+    public event Action OnPlayerDataUpdated;
+
     public Vector3 PlayerCenterPos { get { return _indicator.transform.position; } }
 
     public Define.Projectile SkillID { get; set; } = Define.Projectile.Hits1;
 
-    public float _ItemCollecRange { get; } = 4.0f;
+    public float _ItemCollecRange { get; } = 1.0f;
+
+    float _exp;
+    public float Exp
+    {
+        get { return _exp; }
+        set
+        {
+            _exp = value;
+            OnPlayerDataUpdated?.Invoke();
+        }
+    }
+    int _killCount;
+    public int KillCount
+    {
+        get { return _killCount; }
+        set
+        {
+            _killCount = value;
+            OnPlayerDataUpdated?.Invoke();
+        }
+    }
+
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
      
-
         Data = new CreatureData(5, 1000, 1000, 5.0f, 0, 9999);
 
         Managers.Game.OnMoveDir -= HandleOnMoveChange;
@@ -75,6 +98,14 @@ public class PlayerController : CreatureController
             {
                 float cd = item.CollectDist * 1;
                 if (dir.sqrMagnitude <= cd * cd)
+                {
+                    item.GetItem();
+                }
+                break;
+            }
+            else if(item.ItemType != Define.ObjectType.Bomb) 
+            {
+                if (dir.sqrMagnitude <= item.CollectDist * item.CollectDist)
                 {
                     item.GetItem();
                 }

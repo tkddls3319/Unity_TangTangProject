@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class ObjectManager
 
     public void Init()
     {
-        
+
     }
 
     public T Spawn<T>(Vector3 pos, int id = 0) where T : BaseController
@@ -27,7 +28,7 @@ public class ObjectManager
         {
             GameObject go = Managers.Resource.Instantiate("Player.prefab");
             go.name = "Player";
-            go.transform.position = pos;    
+            go.transform.position = pos;
 
             Player = go.GetOrAddComponent<PlayerController>();
             Player.Init();
@@ -54,7 +55,7 @@ public class ObjectManager
 
             return mc as T;
         }
-        else if(type == typeof(ProjectileController))
+        else if (type == typeof(ProjectileController))
         {
             string name = Define.Projectile.Bolt.ToString();
             switch (id)
@@ -96,14 +97,14 @@ public class ObjectManager
                     name = Define.Projectile.WaveForm.ToString();
                     break;
 
-            } 
+            }
             GameObject go = Managers.Resource.Instantiate($"{name}.prefab");
             go.transform.position = pos;
             Animator anim = go.GetComponent<Animator>();
             anim.Play(name);
 
             ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
-        
+
             Projectiles.Add(pc);
             pc.Init();
 
@@ -148,9 +149,28 @@ public class ObjectManager
         }
         else if (type == typeof(ExpController))
         {
-            Exps.Remove(obj as ExpController);  
+            Exps.Remove(obj as ExpController);
             Managers.Resource.Destroy(obj.gameObject);
             Managers.Game.Ground.Remove(obj as ExpController);
         }
+    }
+
+    public void KillALLMonster()
+    {
+        UI_GameScene scene = Managers.UI.SceneUI as UI_GameScene;
+
+        if (scene != null)
+            scene.EffectFlash();
+
+        foreach (MonsterController monster in Monsters.ToList())
+        {
+            if (monster.ObjectType == Define.ObjectType.Monster)
+                monster.OnDead();
+        }
+    }
+
+    public void CollectAllDropItem()
+    {
+
     }
 }

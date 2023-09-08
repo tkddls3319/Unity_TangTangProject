@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BaseScene : MonoBehaviour
+public abstract class BaseScene : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Define.Scene SceneType { get; protected set; } = Define.Scene.Unknown;
+
+    void Awake()
     {
-        
+        Init();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Init()
     {
-        
+        Object obj = GameObject.FindObjectOfType(typeof(EventSystem));
+        if (obj == null)
+            Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
     }
+
+    public abstract void Clear();
 }

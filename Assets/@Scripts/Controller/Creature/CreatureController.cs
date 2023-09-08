@@ -47,9 +47,10 @@ public class CreatureController : BaseController
         }
     }
 
-    protected virtual void OnDead()
+    public virtual void OnDead()
     {
         Status = Define.CreatureState.Dead;
+
     }
 
 }

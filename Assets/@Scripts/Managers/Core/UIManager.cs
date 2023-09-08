@@ -9,7 +9,7 @@ public class UIManager
     int _order = 20;
     public UI_Scene SceneUI { get; private set; }
     public UI_Base JoystickUI { get; private set; }
-    Stack<UI_Popup> _popups;
+    Stack<UI_Popup> _popups = new Stack<UI_Popup>();
 
     public GameObject Root
     {

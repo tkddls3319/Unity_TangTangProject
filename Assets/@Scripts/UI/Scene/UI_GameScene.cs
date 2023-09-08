@@ -1,5 +1,8 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -23,13 +26,22 @@ public class UI_GameScene : UI_Scene
     }
     enum GameObjects
     {
-        ExpBar
+        ExpBar,
+            EffectFlash
+    }
+    enum Texts
+    {
+        KillValueText
     }
     public override bool Init()
     {
+        if (base.Init() == false)
+            return false;
 
+        #region Bind
         Bind<Button>(typeof(Buttons));
         Bind<GameObject>(typeof(GameObjects));
+        Bind<TMP_Text>(typeof(Texts));
 
         GetButton((int)Buttons.BtnBolt).gameObject.BindEvent(() =>
         {
@@ -82,20 +94,34 @@ public class UI_GameScene : UI_Scene
             Managers.Game.Player.SkillID = Define.Projectile.WaveForm;
 
         }); ;
+        #endregion
 
+        Managers.Game.Player.OnPlayerDataUpdated += OnPlayerDataUpdated;
 
-
-        return base.Init();
+        return true;
     }
 
-    private void LateUpdate()
+    private void OnPlayerDataUpdated()
     {
-        SetHpRatio(1);
+        GetObject((int)GameObjects.ExpBar).GetComponent<Slider>().value = Managers.Game.Player.Exp;
+        GetTMP_Text((int)Texts.KillValueText).text = $"{Managers.Game.Player.KillCount}";
     }
 
-    public void SetHpRatio(float ratio)
+
+    public void EffectFlash()
     {
-        GetObject((int)GameObjects.ExpBar).GetComponent<Slider>().value += ratio;
+        StartCoroutine(CoEffectFlash());
     }
+    IEnumerator CoEffectFlash()
+    {
+        Color color = Color.red;
 
+        yield return null;
+
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(GetObject((int)GameObjects.EffectFlash).GetComponent<Image>().DOFade(1, 0.1f))
+            .Append(GetObject((int)GameObjects.EffectFlash).GetComponent<Image>().DOFade(0, 0.2f))
+            .OnComplete(() => { });
+    }
 }

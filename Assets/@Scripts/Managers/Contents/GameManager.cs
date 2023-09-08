@@ -5,6 +5,9 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
+
+
+
 public class GameManager : MonoBehaviour
 {
     public event Action<Vector2> OnMoveDir;
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
     public PlayerController Player { get; set; }
     public GroundController Ground { get; set; }
 
+    public float TimeRemaining = 60;
     public void Init()
     {
         Ground = GameObject.Find("@Ground").GetOrAddComponent<GroundController>();

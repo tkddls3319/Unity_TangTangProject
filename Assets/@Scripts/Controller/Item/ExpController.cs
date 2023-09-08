@@ -69,9 +69,11 @@ public class ExpController : DropItemController
             Vector3 dir = (transform.position - Managers.Game.Player.PlayerCenterPos).normalized;
             Vector3 target = gameObject.transform.position + dir * 1.5f;
 
+            //todo : 주석풀기
+
             seqeu.Append(transform.DOMove(target, 0.3f).SetEase(Ease.Linear)).OnComplete(() =>
             {
-                _coMoveToPlayer = StartCoroutine(CoMoveToPlayer());
+            //    _coMoveToPlayer = StartCoroutine(CoMoveToPlayer());
             });
         }
 
@@ -80,7 +82,16 @@ public class ExpController : DropItemController
     {
         while (this.IsMyNotNullActive() == true)
         {
-            Managers.Object.Dspawn(this);
+            float dist = Vector3.Distance(gameObject.transform.position, Managers.Game.Player.PlayerCenterPos);
+            transform.position = Vector3.MoveTowards(transform.position, Managers.Game.Player.PlayerCenterPos, Time.deltaTime * 30.0f);
+
+            if (dist < 0.2f)
+            {
+                Managers.Game.Player.Exp += _expInfo.ExpAmount;
+                Managers.Object.Dspawn(this);
+                yield break;
+            }
+
             yield return new WaitForFixedUpdate();
         }
     }

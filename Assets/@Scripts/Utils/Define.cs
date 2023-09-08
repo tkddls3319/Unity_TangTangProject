@@ -8,8 +8,9 @@ public static class Define
     public enum ObjectType
     {
         Player,
-        Zombe,
-        Exp
+        Monster,
+        Exp,
+             Bomb,
     }
 
     public enum UIEvent
@@ -51,5 +52,21 @@ public static class Define
         Skill,
         Hit,
         Dead,
+    }
+
+    public enum Scene
+    {
+        Unknown,
+        TitleScene,
+        LobbyScene,
+        MainScene,
+    }
+
+    public enum DropItemType
+    {
+        Potion,
+        Magnet,
+        DropBox,
+        Bomb
     }
 }

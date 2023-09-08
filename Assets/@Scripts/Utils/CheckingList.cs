@@ -15,7 +15,8 @@ public class CheckingList
      * 
      * 아이템 먹기 ok
      * 아이탬 추가 획득 추가 ok
-     * 경험치바생성
+     * 경험치바생성 및 경험치 획득ㅇ
+     * dropItem 추가
      * 골드바 생성
      */
 }

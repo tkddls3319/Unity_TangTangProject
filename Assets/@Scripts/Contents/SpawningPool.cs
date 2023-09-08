@@ -8,33 +8,24 @@ public class SpawningPool : MonoBehaviour
     int _maxMonsterCount = 10;
     Coroutine _coUpdateSpaningPool;
 
-    public bool Stopped { get; set; } = false;
-
-    void Start()
+    public void StartSpawn()
     {
-        _coUpdateSpaningPool = StartCoroutine(CoUpdateSpaningPool());
+        if (_coUpdateSpaningPool == null)
+            _coUpdateSpaningPool = StartCoroutine(CoUpdateSpaningPool());
     }
-
     IEnumerator CoUpdateSpaningPool()
     {
         while (true)
         {
-            Spawn();
+            int monsterCount = Managers.Object.Monsters.Count;
+            if (_maxMonsterCount <= monsterCount)
+                continue;
+
+            Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
+
             yield return new WaitForSeconds(_monsterInterval);
         }
-    }
-
-    void Spawn()
-    {
-        if (Stopped)
-            return;
-
-      int monsterCount =  Managers.Object.Monsters.Count;
-        if (_maxMonsterCount <= monsterCount)
-            return;
-
-        Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
-        MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0, 2));
     }
 
 }

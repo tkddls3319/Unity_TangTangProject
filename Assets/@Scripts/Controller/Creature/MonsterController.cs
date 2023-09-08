@@ -43,9 +43,10 @@ public class MonsterController : CreatureController
                 break;
         }
     }
-    protected override void OnDead()
+    public override void OnDead()
     {
         base.OnDead();
+        Managers.Game.Player.KillCount++;
 
         ExpController exp = Managers.Object.Spawn<ExpController>(transform.position);
         exp.SetInfo(Managers.Game.GetGemInfo());
