@@ -4,6 +4,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static Define;
 
+public class PlayerData
+{
+    public int Level;
+    public float MaxExp;
+
+    public PlayerData(int level, float maxExp)
+    {
+        Level = level;
+        MaxExp = maxExp;
+    }
+}
+
 
 public class SkillData
 {
@@ -21,24 +33,26 @@ public class SkillData
 
 public class CreatureData
 {
+    public int Id;
     public int Damage;
     public int MaxHp;
     public int Hp;
     public float Speed;
-    public int MaxExp;
     public int Exp;
+    public string PrefabString;
 
     public CreatureData()
     {
     }
-    public CreatureData(int damage, int maxHp, int hp, float speed, int maxExp, int exp)
+    public CreatureData(int id, int damage, int maxHp, int hp, float speed, int exp, string prefabString)
     {
+        Id = id;
         Damage = damage;
         MaxHp = maxHp;
         Hp = hp;
         Speed = speed;
-        MaxExp = maxExp;
         Exp = exp;
+        PrefabString = prefabString;
     }
 
     public CreatureData DeepCopy()
@@ -48,7 +62,6 @@ public class CreatureData
         newCopy.MaxHp = MaxHp;
         newCopy.Hp = Hp;
         newCopy.Speed = Speed;
-        newCopy.MaxExp = MaxExp;
         newCopy.Exp = Exp;
         return newCopy;
     }

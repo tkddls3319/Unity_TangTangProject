@@ -14,13 +14,7 @@ public class MainScene : BaseScene
     {
         base.Init();
         SceneType = Define.Scene.MainScene;
-
-        Managers.Resource.LoadAllAsync<Object>("LoadPrefab", (key, count, totalCount) =>
-        {
-            if (count == totalCount)
-                LoadStage();
-        });
-
+        LoadStage();
     }
     private void Update()
     {
@@ -33,8 +27,10 @@ public class MainScene : BaseScene
     }
     void LoadStage()
     {
+        if (_spawningPool == null)
+            _spawningPool = gameObject.GetOrAddComponent<SpawningPool>();
+
         PlayerController player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
-        _spawningPool = gameObject.GetOrAddComponent<SpawningPool>();
 
         Camera.main.GetOrAddComponent<CameraController>().Target = player.gameObject;
 
@@ -45,9 +41,7 @@ public class MainScene : BaseScene
             _spawningPool = gameObject.AddComponent<SpawningPool>();
 
 
-        //  StartCoroutine(StartWave());
-        SpawnWaveReward();
-        _spawningPool.StartSpawn();
+         StartCoroutine(StartWave());
     }
 
     IEnumerator StartWave()
@@ -62,17 +56,19 @@ public class MainScene : BaseScene
     }
     void SpawnWaveReward()
     {
+        Managers.Game.TimeRemaining = 60;
 
-        //Managers.Game.TimeRemaining = 60;
+        DropItemType spawnType = (DropItemType)UnityEngine.Random.Range(0, 3);
 
-        //DropItemType spawnType = (DropItemType)UnityEngine.Random.Range(0, 3);
+        Vector3 randPos = new Vector2(Random.Range(-3, 3), Random.Range(-3, 3));
 
-        //Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
 
+        //todo : switch »ì¸®±â
+        Managers.Object.Spawn<BombController>(randPos).SetInfo();
         //switch (spawnType)
         //{
         //    case DropItemType.Bomb:
-        //            Managers.Object.Spawn<BombController>(randPos).SetInfo();
+        //        Managers.Object.Spawn<BombController>(randPos).SetInfo();
         //        break;
         //}
     }

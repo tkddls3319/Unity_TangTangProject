@@ -37,7 +37,7 @@ public class DropItemController : BaseController
     public virtual void CompleteGetItem()
     {
     }
-    private void OnDisable()
+    virtual public void OnDisable()
     {
         if (_coroutine != null)
         {

@@ -12,6 +12,7 @@ public class ObjectManager
     public HashSet<MonsterController> Monsters { get; } = new HashSet<MonsterController>();
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<ExpController> Exps { get; } = new HashSet<ExpController>();
+    public HashSet<DropItemController> DropItems { get; } = new HashSet<DropItemController>();
 
     public void Init()
     {
@@ -21,34 +22,35 @@ public class ObjectManager
     public T Spawn<T>(Vector3 pos, int id = 0) where T : BaseController
     {
         //TODO : 아이디값에 따라 몬스터 및 아이템 변경
-
         Type type = typeof(T);
 
         if (type == typeof(PlayerController))
         {
-            GameObject go = Managers.Resource.Instantiate("Player.prefab");
+            CreatureData data = null;
+            if (Managers.Data.MonsterDatas.TryGetValue(id, out data) == false)
+                return null;
+
+            GameObject go = Managers.Resource.Instantiate(data.PrefabString);
             go.name = "Player";
             go.transform.position = pos;
 
             Player = go.GetOrAddComponent<PlayerController>();
             Player.Init();
+            Player.Data = data.DeepCopy();
+
             Managers.Game.Player = Player;
             return Player as T;
         }
         else if (type == typeof(MonsterController))
         {
-            string name = (id == 0 ? "Zombe" : "Zombe");
+            CreatureData data = null;
+            if (Managers.Data.MonsterDatas.TryGetValue(id, out data) == false)
+                return null;
 
-            GameObject go = Managers.Resource.Instantiate($"{name}.prefab");
+            GameObject go = Managers.Resource.Instantiate(data.PrefabString);
             go.transform.position = pos;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
-            //TODO : 몬스터 늘어나면 변경
-
-            CreatureData data = null;
-            if (Managers.Data.MonsterDatas.TryGetValue(0, out data) == false)
-                return null;
-
             mc.Data = data.DeepCopy();
             Monsters.Add(mc);
             mc.Init();
@@ -122,7 +124,17 @@ public class ObjectManager
 
             return ec as T;
         }
+        else if( type == typeof(BombController))
+        {
+            GameObject go = Managers.Resource.Instantiate("Bomb.prefab");
+            go.transform.position = pos;
+            BombController bc = go.GetOrAddComponent<BombController>();
+            DropItems.Add(bc);
+            bc.Init();
 
+            Managers.Game.Ground.Add(bc);
+            return bc as T;
+        }
         return null;
     }
 
@@ -152,6 +164,12 @@ public class ObjectManager
             Exps.Remove(obj as ExpController);
             Managers.Resource.Destroy(obj.gameObject);
             Managers.Game.Ground.Remove(obj as ExpController);
+        }
+        else if (type == typeof(BombController))
+        {
+            DropItems.Remove(obj as ExpController);
+            Managers.Resource.Destroy(obj.gameObject);
+            Managers.Game.Ground.Remove(obj as BombController);
         }
     }
 

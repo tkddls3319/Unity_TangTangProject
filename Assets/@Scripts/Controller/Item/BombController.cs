@@ -21,8 +21,7 @@ public class BombController : DropItemController
         base.GetItem();
         if (_coroutine == null && this.IsMyNotNullActive())
         {
-            //todo : 주석풀기
-           // _coroutine = StartCoroutine(CoDefaultMoveToPlayer());
+            _coroutine = StartCoroutine(CoDefaultMoveToPlayer());
         }
     }
 
@@ -30,7 +29,7 @@ public class BombController : DropItemController
     {
         base.CompleteGetItem();
 
-        //Managers.Object.KillALLMonster();
-        //Managers.Object.Dspawn(this);
+        Managers.Object.KillALLMonster();
+        Managers.Object.Dspawn(this);
     }
 }

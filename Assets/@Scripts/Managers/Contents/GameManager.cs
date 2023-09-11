@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public float TimeRemaining = 60;
     public void Init()
     {
-        Ground = GameObject.Find("@Ground").GetOrAddComponent<GroundController>();
     }
 
     public ExpInfo GetGemInfo()

@@ -18,5 +18,7 @@ public class CheckingList
      * 경험치바생성 및 경험치 획득ㅇ
      * dropItem 추가
      * 골드바 생성
+     * 
+     * 경험치100프로일때 래벨업
      */
 }

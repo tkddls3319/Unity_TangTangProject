@@ -69,14 +69,11 @@ public class ExpController : DropItemController
             Vector3 dir = (transform.position - Managers.Game.Player.PlayerCenterPos).normalized;
             Vector3 target = gameObject.transform.position + dir * 1.5f;
 
-            //todo : 주석풀기
-
             seqeu.Append(transform.DOMove(target, 0.3f).SetEase(Ease.Linear)).OnComplete(() =>
             {
-            //    _coMoveToPlayer = StartCoroutine(CoMoveToPlayer());
+                _coMoveToPlayer = StartCoroutine(CoMoveToPlayer());
             });
         }
-
     }
     public IEnumerator CoMoveToPlayer()
     {
@@ -95,4 +92,15 @@ public class ExpController : DropItemController
             yield return new WaitForFixedUpdate();
         }
     }
+    public override void OnDisable()
+    {
+        base.OnDisable();
+
+        if(_coMoveToPlayer != null)
+        {
+            StopCoroutine(_coMoveToPlayer);
+            _coMoveToPlayer = null;
+        }   
+    }
 }
+

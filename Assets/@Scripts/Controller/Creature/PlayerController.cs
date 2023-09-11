@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerController : CreatureController
 {
-
     Vector2 _moveDir = Vector2.zero;
 
     Transform _indicator;
@@ -45,8 +44,6 @@ public class PlayerController : CreatureController
     {
         if (base.Init() == false)
             return false;
-     
-        Data = new CreatureData(5, 1000, 1000, 5.0f, 0, 9999);
 
         Managers.Game.OnMoveDir -= HandleOnMoveChange;
         Managers.Game.OnMoveDir += HandleOnMoveChange;

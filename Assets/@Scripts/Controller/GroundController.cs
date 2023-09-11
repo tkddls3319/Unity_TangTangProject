@@ -5,7 +5,7 @@ using UnityEngine;
 
 class Cell
 {
-    public HashSet<DropItemController> Objects { get; } = new HashSet<DropItemController>();    
+    public HashSet<DropItemController> Objects { get; } = new HashSet<DropItemController>();
 }
 public class GroundController : BaseController
 {
@@ -17,6 +17,8 @@ public class GroundController : BaseController
             return false;
 
         _grid = gameObject.GetOrAddComponent<Grid>();
+        Managers.Game.Ground = this;
+
 
         return true;
     }
@@ -59,28 +61,28 @@ public class GroundController : BaseController
     {
         List<DropItemController> objects = new List<DropItemController>();
 
-      	Vector3Int left = _grid.WorldToCell(pos + new Vector3(-range, 0));
-		Vector3Int right = _grid.WorldToCell(pos + new Vector3(+range, 0));
-		Vector3Int bottom = _grid.WorldToCell(pos + new Vector3(0, -range));
-		Vector3Int top = _grid.WorldToCell(pos + new Vector3(0, +range));
+        Vector3Int left = _grid.WorldToCell(pos + new Vector3(-range, 0));
+        Vector3Int right = _grid.WorldToCell(pos + new Vector3(+range, 0));
+        Vector3Int bottom = _grid.WorldToCell(pos + new Vector3(0, -range));
+        Vector3Int top = _grid.WorldToCell(pos + new Vector3(0, +range));
 
-		int minX = left.x;
-		int maxX = right.x;
-		int minY = bottom.y;
-		int maxY = top.y;
+        int minX = left.x;
+        int maxX = right.x;
+        int minY = bottom.y;
+        int maxY = top.y;
 
-		for (int x = minX; x <= maxX; x++)
-		{
-			for (int y = minY; y <= maxY; y++)
-			{
-				if (_cells.ContainsKey(new Vector3Int(x, y, 0)) == false)
-					continue;
+        for (int x = minX; x <= maxX; x++)
+        {
+            for (int y = minY; y <= maxY; y++)
+            {
+                if (_cells.ContainsKey(new Vector3Int(x, y, 0)) == false)
+                    continue;
 
-				objects.AddRange(_cells[new Vector3Int(x, y, 0)].Objects);
-			}
-		}
+                objects.AddRange(_cells[new Vector3Int(x, y, 0)].Objects);
+            }
+        }
 
-		return objects;
+        return objects;
 
     }
 

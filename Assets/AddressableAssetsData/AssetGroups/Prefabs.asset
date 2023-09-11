@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4749151d7b51b1047a4bd4b377cc1e30
   m_SerializeEntries:
-  - m_GUID: d5b397fe643adfe4d882cfd6288d4e46
-    m_Address: UI_Test.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
   - m_GUID: 13969ecbff899bd43ae74d722eeb0b2e
     m_Address: Player.prefab
     m_ReadOnly: 0
@@ -39,6 +34,11 @@ MonoBehaviour:
     - LoadPrefab
   - m_GUID: 06ebb57f1cea58f41be403bdbb7cbb35
     m_Address: Bomb.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: c4bae3724fae9df448f4303c05ac8654
+    m_Address: Skull.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

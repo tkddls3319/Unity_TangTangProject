@@ -18,6 +18,7 @@ public class MonsterController : CreatureController
 
         if (pc == null)
             return;
+        ObjectType = Define.ObjectType.Monster;
 
         if (Status != Define.CreatureState.Hit)
             Status = Define.CreatureState.Moving;
