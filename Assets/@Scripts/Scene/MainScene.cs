@@ -12,10 +12,17 @@ public class MainScene : BaseScene
 
     private void Awake()
     {
+        Init();
+    
+    }
+
+    protected override void Init()
+    {
         base.Init();
         SceneType = Define.Scene.MainScene;
         LoadStage();
     }
+
     private void Update()
     {
         Managers.Game.TimeRemaining -= Time.deltaTime;

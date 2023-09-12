@@ -12,7 +12,7 @@ public class Managers : MonoBehaviour
 
     #region Contentes
     DataManager _data = new();
-    GameManager _game = new();
+    GameManager _game = new GameManager();
     ObjectManager _object = new();
     PoolManager _pool = new();
 
@@ -46,9 +46,6 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
             s_instance = go.GetComponent<Managers>();
-
-            Instance?._data.Init();
-            Instance?._game.Init();
         }
     }
 
@@ -57,7 +54,7 @@ public class Managers : MonoBehaviour
        // Scene.Clear();
         UI.Clear();
         Pool.Clear();
-       // Object.Clear();
+        Object.Clear();
     }
 
 

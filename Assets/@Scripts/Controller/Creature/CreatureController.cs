@@ -22,11 +22,9 @@ public class CreatureController : BaseController
 
     public override bool Init()
     {
-        if (base.Init() == false)
-            return false;
+        base.Init();
 
         _animator = gameObject.GetComponent<Animator>();
-
         return true;
     }
 
@@ -39,7 +37,6 @@ public class CreatureController : BaseController
         Data.Hp -= damage;
         Status = Define.CreatureState.Hit;
 
-        //Debug.Log($"{gameObject.name} : {Data.Hp}");
         if (Data.Hp <= 0)
         {
             Data.Hp = 0;
@@ -50,7 +47,6 @@ public class CreatureController : BaseController
     public virtual void OnDead()
     {
         Status = Define.CreatureState.Dead;
-
     }
 
 }

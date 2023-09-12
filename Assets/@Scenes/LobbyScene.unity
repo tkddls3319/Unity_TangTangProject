@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1c8de2a5eea6245952b11889311b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &3778391113932640280
+--- !u!1001 &2139444961
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -260,7 +260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4632666129767150274, guid: d79e0eeb29c44e444bb16b9210c3975d, type: 3}
       propertyPath: m_Name
-      value: EventSystem
+      value: '@EventSystem'
       objectReference: {fileID: 0}
     - target: {fileID: 7518812022733059820, guid: d79e0eeb29c44e444bb16b9210c3975d, type: 3}
       propertyPath: m_RootOrder

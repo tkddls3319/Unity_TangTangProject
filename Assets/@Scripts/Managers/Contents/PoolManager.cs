@@ -36,13 +36,14 @@ class Pool
     }
     public void Push(GameObject go)
     {
-        _pool.Release(go);
+        if (go.activeSelf)
+            _pool.Release(go);
     }
 
     GameObject OnCreate()
     {
         GameObject go = GameObject.Instantiate(_prefab);
-        go.transform.parent = Root;
+        go.transform.SetParent(Root);
         go.name = _prefab.name;
 
         return go;
@@ -65,20 +66,6 @@ class Pool
 public class PoolManager
 {
     Dictionary<string, Pool> _pools = new Dictionary<string, Pool>();
-    Transform _root;
-
-    Transform Root
-    {
-        get
-        {
-            if (_root == null)
-            {
-                GameObject go = new GameObject() { name = $"@Pool_Root" };
-                _root = go.transform;
-            }
-            return _root;
-        }
-    }
 
     public void CreatePool(GameObject prefab)
     {
@@ -104,13 +91,6 @@ public class PoolManager
 
     public void Clear()
     {
-        if (_root == null)
-            return;
-
-        foreach (Transform child in _root)
-            GameObject.Destroy(child);
-
         _pools.Clear();
     }
-
 }

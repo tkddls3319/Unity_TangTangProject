@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1660343150284906988}
   - component: {fileID: 7555403519484382893}
   - component: {fileID: 4834692314688908741}
+  - component: {fileID: -818938472932541517}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -157,3 +158,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca581e0313848394ba6b5e84644c6f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-818938472932541517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845709325455417868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afa7dfe91318124786f100c742de592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUsing: 1

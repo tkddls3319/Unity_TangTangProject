@@ -40,12 +40,16 @@ public class PlayerController : CreatureController
         }
     }
 
+    private void OnDestroy()
+    {
+        if (Managers.Game != null)
+            Managers.Game.OnMoveDir -= HandleOnMoveChange;
+    }
+
     public override bool Init()
     {
-        if (base.Init() == false)
-            return false;
+        base.Init();
 
-        Managers.Game.OnMoveDir -= HandleOnMoveChange;
         Managers.Game.OnMoveDir += HandleOnMoveChange;
 
         ObjectType = Define.ObjectType.Player;
@@ -138,7 +142,12 @@ public class PlayerController : CreatureController
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Status = Define.CreatureState.Idle;
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+        Managers.Game.OnPlayerDead();
     }
 
     #region Projeectile
@@ -167,10 +176,5 @@ public class PlayerController : CreatureController
         }
     }
 
-    private void OnDestroy()
-    {
-        if (Managers.Game != null)
-            Managers.Game.OnMoveDir -= HandleOnMoveChange;
-    }
     #endregion
 }

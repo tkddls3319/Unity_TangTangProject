@@ -47,6 +47,7 @@ public class UI_Base : MonoBehaviour
     protected void BindObject(Type type) { Bind<GameObject>(type); }
     protected void BindImage(Type type) { Bind<Image>(type); }
     protected void BindText(Type type) { Bind<Text>(type); }
+    protected void BindTMP_Text(Type type) { Bind<TMP_Text>(type); }
     protected void BindTextMeshPro(Type type) { Bind<TextMeshProUGUI>(type); }
     protected void BindButton(Type type) { Bind<Button>(type); }
 

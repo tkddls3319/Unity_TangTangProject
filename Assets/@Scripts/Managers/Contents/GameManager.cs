@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
     public event Action<Vector2> OnMoveDir;
 
@@ -47,5 +47,15 @@ public class GameManager : MonoBehaviour
                 return new ExpInfo(ExpInfo.GemType.Gold, new Vector3(0.35f, 0.35f, 0.35f));
         }
         return null;
+    }
+
+    public void OnPlayerDead()
+    {
+        GameOver();
+    }
+    public void GameOver()
+    {
+        Player.StopAllCoroutines();
+        Managers.Scene.LoadScene(Define.Scene.LobbyScene);
     }
 }

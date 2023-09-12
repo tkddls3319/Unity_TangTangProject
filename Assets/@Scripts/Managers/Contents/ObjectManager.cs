@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class ObjectManager
@@ -34,8 +35,8 @@ public class ObjectManager
             go.name = "Player";
             go.transform.position = pos;
 
-            Player = go.GetOrAddComponent<PlayerController>();
-            Player.Init();
+            Player = go.GetComponent<PlayerController>();
+            //Player.Init();
             Player.Data = data.DeepCopy();
 
             Managers.Game.Player = Player;
@@ -191,4 +192,12 @@ public class ObjectManager
     {
 
     }
+    public void Clear()
+    {
+        Monsters.Clear();
+        Exps.Clear();
+        Projectiles.Clear();
+        DropItems.Clear();
+    }
+
 }
