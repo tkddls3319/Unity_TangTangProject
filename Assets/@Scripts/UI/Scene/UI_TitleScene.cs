@@ -16,7 +16,7 @@ public class UI_TitleScene : UI_Scene
     }
     enum TMP_Texts
     {
-        TitleText3
+        StartText
     }
 
     bool isPreload = false;
@@ -59,6 +59,6 @@ public class UI_TitleScene : UI_Scene
     }
     void StartButtonAnimation()
     {
-        GetTMP_Text((int)TMP_Texts.TitleText3).DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();
+        GetTMP_Text((int)TMP_Texts.StartText).DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();
     }
 }
