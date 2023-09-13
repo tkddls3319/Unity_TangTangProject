@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
@@ -17,11 +18,17 @@ public class UI_StaminaChargePopup : UI_Popup
         BackgroundButton,
         BuyButton
     }
+    enum Text
+    {
+        BackgroundText
+    }
+
     public override bool Init()
     {
         if(base.Init() == false)
             return false;
 
+        BindTMP_Text(typeof(Text));
         BindObject(typeof(GameObejcts));
         BindButton(typeof(Buttons));
 
@@ -29,6 +36,7 @@ public class UI_StaminaChargePopup : UI_Popup
         {
             ClosePopupUI();
         });
+        GetButton((int)Buttons.BackgroundButton).gameObject.GetOrAddComponent<UI_ButtonAnimation>();
 
         GetButton((int)Buttons.BuyButton).gameObject.BindEvent(() =>
         {
@@ -37,7 +45,8 @@ public class UI_StaminaChargePopup : UI_Popup
                 string[] spriteNames = new string[1];
                 int[] numbers = new int[1];
 
-                spriteNames[0] = "";
+                spriteNames[0] = Managers.Data.SpriteDatas[Define.STAMINA_ID].PrefabString;
+                numbers[0] = 15;
 
                 UI_RewardPopup rewardPopup = (Managers.UI.SceneUI as UI_LobbyScene).RewardPopupUI;
                 rewardPopup.gameObject.SetActive(true);
@@ -48,6 +57,8 @@ public class UI_StaminaChargePopup : UI_Popup
                 rewardPopup.SetInfo(spriteNames, numbers);
             }
         });
+
+        StartTextAnimation((int)Text.BackgroundText);
 
         return true;
     }

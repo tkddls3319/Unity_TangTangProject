@@ -1,18 +1,25 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_RewardPopup : UI_Popup
 {
-    enum GameObejcts
+    enum GameObjects
     {
-        Content
+        Content,
+        RewardItemScrollContentObject,
     }
     enum Buttons
     {
         BackgroundButton,
     }
+    enum Text 
+    {
+        BackgroundText
+    }
+
 
     string[] _spriteNames;
     int[] _numbers;
@@ -22,13 +29,15 @@ public class UI_RewardPopup : UI_Popup
         if (base.Init() == false)
             return false;
 
-        BindObject(typeof(GameObejcts));
+        BindTMP_Text(typeof(Text)); 
+        BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
 
         GetButton((int)Buttons.BackgroundButton).gameObject.BindEvent(() =>
         {
             ClosePopupUI();
         });
+        StartTextAnimation((int)Text.BackgroundText);
 
         RefreshUI();
 
@@ -48,21 +57,17 @@ public class UI_RewardPopup : UI_Popup
             return;
 
 
-        //GetObject((int)GameObjects.RewardItemScrollContentObject).DestroyChilds();
-        //for (int i = 0; i < _spriteName.Length; i++)
-        //{
-        //    Debug.Log(_spriteName[i]);
-        //    UI_MaterialItem item = Managers.UI.MakeSubItem<UI_MaterialItem>(GetObject((int)GameObjects.RewardItemScrollContentObject).transform);
-        //    item.SetInfo(_spriteName[i], _count[i]);
-        //}
-
+        GetObject((int)GameObjects.RewardItemScrollContentObject).DestroyChilds();
+        for (int i = 0; i < _spriteNames.Length; i++)
+        {
+            UI_MaterialItem item = Managers.UI.MakeSubItem<UI_MaterialItem>(GetObject((int)GameObjects.RewardItemScrollContentObject).transform);
+            item.SetInfo(_spriteNames[i], _numbers[i]);
+        }
     }
-
-
 
     public override void ClosePopupUI()
     {
-        Transform trans = GetObject((int)GameObejcts.Content).transform;
+        Transform trans = GetObject((int)GameObjects.Content).transform;
 
         var seq = DOTween.Sequence();
         seq.Append(trans.DOScale(0.5f, 0.1f).SetEase(Ease.InOutBack).SetUpdate(true));

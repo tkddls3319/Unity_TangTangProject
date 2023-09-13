@@ -9,6 +9,7 @@ public class DataManager
     public Dictionary<int, PlayerData> PlayerDatas { get; private set; } = new Dictionary<int, PlayerData>();
     public Dictionary<int, SkillData> SkillDatas { get; private set; } = new Dictionary<int, SkillData>();
     public Dictionary<int, CreatureData> MonsterDatas { get; private set; } = new Dictionary<int, CreatureData>();
+    public Dictionary<int, SprietData> SpriteDatas { get; private set; } = new Dictionary<int, SprietData>();
 
     public void Init()
     {
@@ -32,6 +33,15 @@ public class DataManager
         MonsterDatas.Add(0, new CreatureData(id: 0, damage: 10, maxHp: 100, hp: 100, speed: 3.0f, exp: 9999, prefabString: "Player.prefab")); //Player
         MonsterDatas.Add(1, new CreatureData(id: 1, damage: 10, maxHp: 20, hp: 20, speed: 1.0f, exp: 1, prefabString: "Zombe.prefab"));
         MonsterDatas.Add(2, new CreatureData(id: 2, damage: 20, maxHp: 30, hp: 30, speed: 1.5f, exp: 2, prefabString: "Skull.prefab"));
+        #endregion
+
+        #region SpriteDatas
+        SpriteDatas.Add(0, new SprietData(id: 0, prefabString: "Stamina.asset"));
+        SpriteDatas.Add(1, new SprietData(id: 1, prefabString: "SilverExp.sprite"));
+        SpriteDatas.Add(2, new SprietData(id: 2, prefabString: "GoldExp.sprite"));
+        SpriteDatas.Add(3, new SprietData(id: 3, prefabString: "Gold.asset"));
+        SpriteDatas.Add(4, new SprietData(id: 4, prefabString: "Dia.asset"));
+        SpriteDatas.Add(5, new SprietData(id: 5, prefabString: "BronzeExp.sprite"));
         #endregion
     }
 }

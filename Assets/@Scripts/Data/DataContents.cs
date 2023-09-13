@@ -66,3 +66,18 @@ public class CreatureData
         return newCopy;
     }
 }
+
+public class SprietData
+{
+    public int Id;
+    public string PrefabString;
+
+    public SprietData()
+    {
+    }
+    public SprietData(int id, string prefabString)
+    {
+        Id = id;
+        PrefabString = prefabString;
+    }
+}

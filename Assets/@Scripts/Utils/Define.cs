@@ -12,6 +12,13 @@ public static class Define
     public const int SILVER_EXP_AMOUNT = 2;
     public const int GOLD_EXP_AMOUNT = 5;
     #endregion
+
+    #region SpriteID
+    public const int STAMINA_ID = 0;
+
+    #endregion
+
+
     public enum ObjectType
     {
         Player,

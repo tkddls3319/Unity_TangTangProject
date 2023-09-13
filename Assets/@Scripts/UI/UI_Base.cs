@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -66,6 +67,11 @@ public class UI_Base : MonoBehaviour
     protected TextMeshProUGUI GetTextMeshPro(int idx) { return Get<TextMeshProUGUI>(idx); }
     protected Button GetButton(int idx) { return Get<Button>(idx); }
     protected Image GetImage(int idx) { return Get<Image>(idx); }
+
+   protected void StartTextAnimation(int Id)
+    {
+        GetTMP_Text(Id).DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();
+    }
 
     public static void BindEvent(GameObject go, Action action = null, Action<BaseEventData> dragAction = null, Define.UIEvent type = Define.UIEvent.Click)
     {

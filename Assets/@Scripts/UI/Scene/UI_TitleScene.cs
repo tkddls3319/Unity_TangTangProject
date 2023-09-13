@@ -53,15 +53,12 @@ public class UI_TitleScene : UI_Scene
                 GetButton((int)Buttons.StartButton).gameObject.SetActive(true);
                 Managers.Data.Init();
                 Managers.Game.Init();
-                StartButtonAnimation();
+                StartTextAnimation((int)TMP_Texts.StartText);
 
                 //TODO : Å×½ºÆ®
                 Managers.Scene.LoadScene(Define.Scene.LobbyScene);
             }
         });
     }
-    void StartButtonAnimation()
-    {
-        GetTMP_Text((int)TMP_Texts.StartText).DOFade(0, 1f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutCubic).Play();
-    }
+
 }

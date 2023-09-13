@@ -40,9 +40,33 @@ public class UIManager
             canvas.sortingOrder = 0;
         }
     }
-    public void ShowJoyStick()
+    public T MakeWorldSpace<T>(Transform parent = null, string name = null) where T : UI_Base
     {
-        GameObject go = Managers.Resource.Instantiate($"UI_Joystick.prefab");
+        if(string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+
+        GameObject go = Managers.Resource.Instantiate($"{name}.prefab");
+        if (parent != null)
+            go.transform.SetParent(parent);
+
+        Canvas canvas = go.GetOrAddComponent<Canvas>(); 
+        canvas.renderMode |= RenderMode.WorldSpace;
+        canvas.worldCamera = Camera.main;
+
+        return go.GetComponent<T>();    
+
+    }
+
+    public T MakeSubItem<T>(Transform paren = null, string name = null) where T : UI_Base
+    {
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        GameObject go = Managers.Resource.Instantiate($"{name}.prefab", paren);
+        go.transform.SetParent(paren);
+
+        return go.GetComponent<T>();
     }
 
     public void ShowSceneUI<T>(string key = null) where T : UI_Scene

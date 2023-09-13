@@ -13,7 +13,7 @@ public class GameData
 
     public int Stamina = 1;//Define.MAX_STAMINA;
     public int Gold = 0;
-    public int Dia = 0;
+    public int Dia = 300;
 
     public int TotalMonsterKillCount = 0;
     public int TotalBossKillCount = 0;
