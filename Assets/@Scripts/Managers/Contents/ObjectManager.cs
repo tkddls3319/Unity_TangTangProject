@@ -60,44 +60,44 @@ public class ObjectManager
         }
         else if (type == typeof(ProjectileController))
         {
-            string name = Define.Projectile.Bolt.ToString();
+            string name = Define.SkillType.Bolt.ToString();
             switch (id)
             {
-                case (int)Define.Projectile.Bolt:
-                    name = Define.Projectile.Bolt.ToString();
+                case (int)Define.SkillType.Bolt:
+                    name = Define.SkillType.Bolt.ToString();
                     break;
-                case (int)Define.Projectile.Charged:
-                    name = Define.Projectile.Charged.ToString();
+                case (int)Define.SkillType.Charged:
+                    name = Define.SkillType.Charged.ToString();
                     break;
-                case (int)Define.Projectile.Crossed:
-                    name = Define.Projectile.Charged.ToString();
+                case (int)Define.SkillType.Crossed:
+                    name = Define.SkillType.Charged.ToString();
                     break;
-                case (int)Define.Projectile.Hits1:
-                    name = Define.Projectile.Hits1.ToString();
+                case (int)Define.SkillType.Hits1:
+                    name = Define.SkillType.Hits1.ToString();
                     break;
-                case (int)Define.Projectile.Hits2:
-                    name = Define.Projectile.Hits2.ToString();
+                case (int)Define.SkillType.Hits2:
+                    name = Define.SkillType.Hits2.ToString();
                     break;
-                case (int)Define.Projectile.Hits3:
-                    name = Define.Projectile.Hits3.ToString();
+                case (int)Define.SkillType.Hits3:
+                    name = Define.SkillType.Hits3.ToString();
                     break;
-                case (int)Define.Projectile.Hits4:
-                    name = Define.Projectile.Hits4.ToString();
+                case (int)Define.SkillType.Hits4:
+                    name = Define.SkillType.Hits4.ToString();
                     break;
-                case (int)Define.Projectile.Hits5:
-                    name = Define.Projectile.Hits5.ToString();
+                case (int)Define.SkillType.Hits5:
+                    name = Define.SkillType.Hits5.ToString();
                     break;
-                case (int)Define.Projectile.Hits6:
-                    name = Define.Projectile.Hits6.ToString();
+                case (int)Define.SkillType.Hits6:
+                    name = Define.SkillType.Hits6.ToString();
                     break;
-                case (int)Define.Projectile.Pulse:
-                    name = Define.Projectile.Pulse.ToString();
+                case (int)Define.SkillType.Pulse:
+                    name = Define.SkillType.Pulse.ToString();
                     break;
-                case (int)Define.Projectile.Spark:
-                    name = Define.Projectile.Spark.ToString();
+                case (int)Define.SkillType.Spark:
+                    name = Define.SkillType.Spark.ToString();
                     break;
-                case (int)Define.Projectile.WaveForm:
-                    name = Define.Projectile.WaveForm.ToString();
+                case (int)Define.SkillType.WaveForm:
+                    name = Define.SkillType.WaveForm.ToString();
                     break;
 
             }

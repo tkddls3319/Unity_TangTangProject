@@ -32,6 +32,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
+  - m_GUID: d65e53dc3a3781c41b5d6b1cb0dded59
+    m_Address: Stamina.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: faedeff46da76524388e2340b493c085
+    m_Address: Gold.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 8230c64403108ad419b21be2d5d3a18f
+    m_Address: Dia.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cf6b4dda2af5c8f4c98864a988628d2b, type: 2}
   m_SchemaSet:

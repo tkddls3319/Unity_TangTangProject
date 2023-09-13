@@ -29,13 +29,13 @@ public class ExpInfo
         switch (type)
         {
             case GemType.Bronze:
-                ExpAmount = 1;
+                ExpAmount = Define.BRONZE_EXP_AMOUNT;
                 break;
             case GemType.Silver:
-                ExpAmount = 5;
+                ExpAmount = Define.SILVER_EXP_AMOUNT;
                 break;
             case GemType.Gold:
-                ExpAmount = 10;
+                ExpAmount = Define.GOLD_EXP_AMOUNT;
                 break;
         }
     }
@@ -96,11 +96,11 @@ public class ExpController : DropItemController
     {
         base.OnDisable();
 
-        if(_coMoveToPlayer != null)
+        if (_coMoveToPlayer != null)
         {
             StopCoroutine(_coMoveToPlayer);
             _coMoveToPlayer = null;
-        }   
+        }
     }
 }
 

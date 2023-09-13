@@ -54,6 +54,9 @@ public class UI_TitleScene : UI_Scene
                 Managers.Data.Init();
                 Managers.Game.Init();
                 StartButtonAnimation();
+
+                //TODO : Å×½ºÆ®
+                Managers.Scene.LoadScene(Define.Scene.LobbyScene);
             }
         });
     }

@@ -37,8 +37,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
-  - m_GUID: d79e0eeb29c44e444bb16b9210c3975d
-    m_Address: EventSystem.prefab
+  - m_GUID: e7ff445d5d9afae4fbe9ef56768f37ca
+    m_Address: UI_StaminaChargePopup.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 98f148c803c2d7c44b6a4a9069cea0bc
+    m_Address: UI_RewardPopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

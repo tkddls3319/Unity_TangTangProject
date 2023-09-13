@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UI_Base : MonoBehaviour
@@ -66,7 +67,7 @@ public class UI_Base : MonoBehaviour
     protected Button GetButton(int idx) { return Get<Button>(idx); }
     protected Image GetImage(int idx) { return Get<Image>(idx); }
 
-    public static void BindEvent(GameObject go, Action action, Define.UIEvent type = Define.UIEvent.Click)
+    public static void BindEvent(GameObject go, Action action = null, Action<BaseEventData> dragAction = null, Define.UIEvent type = Define.UIEvent.Click)
     {
         UI_EventHandler evt = go.GetOrAddComponent<UI_EventHandler>();
         switch (type)
@@ -75,13 +76,13 @@ public class UI_Base : MonoBehaviour
                 evt.OnClickHandler -= action;
                 evt.OnClickHandler += action;
                 break;
-            case Define.UIEvent.Down:
-                evt.OnDownHandler -= action;
-                evt.OnDownHandler += action;
+            case Define.UIEvent.PointerDown:
+                evt.OnPointerDownHandler -= action;
+                evt.OnPointerDownHandler += action;
                 break;
-            case Define.UIEvent.Move:
-                evt.OnMoveHandler -= action;
-                evt.OnMoveHandler += action;
+            case Define.UIEvent.PointerUp:
+                evt.OnPointerUpHandler -= action;
+                evt.OnPointerUpHandler += action;
                 break;
             case Define.UIEvent.Enter:
                 evt.OnEnterHandler -= action;
@@ -90,6 +91,22 @@ public class UI_Base : MonoBehaviour
             case Define.UIEvent.Exit:
                 evt.OnExitHandler -= action;
                 evt.OnExitHandler += action;
+                break;
+            case Define.UIEvent.Move:
+                evt.OnPointerUpHandler -= action;
+                evt.OnPointerUpHandler += action;
+                break;
+            case Define.UIEvent.Drag:
+                evt.OnDragHandler -= dragAction;
+                evt.OnDragHandler += dragAction;
+                break;
+            case Define.UIEvent.BeginDrag:
+                evt.OnBeginDragHandler -= dragAction;
+                evt.OnBeginDragHandler += dragAction;
+                break;
+            case Define.UIEvent.EndDrag:
+                evt.OnEndDragHandler -= dragAction;
+                evt.OnEndDragHandler += dragAction;
                 break;
         }
     }

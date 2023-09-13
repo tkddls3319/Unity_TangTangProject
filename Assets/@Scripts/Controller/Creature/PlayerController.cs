@@ -15,7 +15,7 @@ public class PlayerController : CreatureController
 
     public Vector3 PlayerCenterPos { get { return _indicator.transform.position; } }
 
-    public Define.Projectile SkillID { get; set; } = Define.Projectile.Hits1;
+    public Define.SkillType SkillID { get; set; } = Define.SkillType.Hits1;
 
     public float _ItemCollecRange { get; } = 1.0f;
 

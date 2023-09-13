@@ -45,55 +45,55 @@ public class UI_GameScene : UI_Scene
 
         GetButton((int)Buttons.BtnBolt).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Bolt;
+            Managers.Game.Player.SkillID = Define.SkillType.Bolt;
         });
         GetButton((int)Buttons.BtnCharged).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Charged;
+            Managers.Game.Player.SkillID = Define.SkillType.Charged;
 
-        }); ;
+        }); 
         GetButton((int)Buttons.BtnCrossed).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Crossed;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Crossed;
+        }); 
         GetButton((int)Buttons.BtnHits1).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Hits1;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Hits1;
+        }); 
         GetButton((int)Buttons.BtnHits2).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Hits2;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Hits2;
+        }); 
         GetButton((int)Buttons.BtnHits3).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Hits3;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Hits3;
+        }); 
         GetButton((int)Buttons.BtnHits4).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Hits4;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Hits4;
+        }); 
         GetButton((int)Buttons.BtnHits5).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Hits5;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Hits5;
+        }); 
         GetButton((int)Buttons.BtnHits6).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Hits6;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Hits6;
+        }); 
         GetButton((int)Buttons.BtnPulse).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Pulse;
-        }); ;
+            Managers.Game.Player.SkillID = Define.SkillType.Pulse;
+        }); 
         GetButton((int)Buttons.BtnSpark).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.Spark;
+            Managers.Game.Player.SkillID = Define.SkillType.Spark;
 
-        }); ;
+        }); 
         GetButton((int)Buttons.BtnWaveForm).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.Projectile.WaveForm;
+            Managers.Game.Player.SkillID = Define.SkillType.WaveForm;
 
-        }); ;
+        }); 
         #endregion
 
         Managers.Game.Player.OnPlayerDataUpdated += OnPlayerDataUpdated;

@@ -21,7 +21,7 @@ public class SceneManagerEx
                 Time.timeScale = 1.0f;
                 SceneManager.LoadScene(GetSceneName(type));
                 break;
-            case Define.Scene.MainScene:
+            case Define.Scene.GameScene:
                 Managers.Clear();
                 Time.timeScale = 1.0f;
                 SceneManager.LoadScene(GetSceneName(type));
