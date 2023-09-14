@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CreatureSprites
+  m_EditorClassIdentifier: 
+  m_GroupName: CreatureSprites
+  m_Data:
+    m_SerializedData: []
+  m_GUID: b18b4ba4d328599449ec606e7d4577de
+  m_SerializeEntries:
+  - m_GUID: 6edfeb0539404ca488a83d8b11b2ed00
+    m_Address: Monster_02.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 5be0e0ba89d2dbb4786f42598377e537
+    m_Address: Monster_00.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 4ca91ed48b37d1c4290c9334d31edbc8
+    m_Address: Monster_04.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 1f7e76c53ab8c104b83a0898945d8788
+    m_Address: Monster_03.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 0a2cff6c3403d8145948ca1348a5e814
+    m_Address: Monster_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cf6b4dda2af5c8f4c98864a988628d2b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5535450bfee0436478d30a77c3fc002b, type: 2}
+    - {fileID: 11400000, guid: 348682e4e8d9f4c438a0bcc7f33d310e, type: 2}

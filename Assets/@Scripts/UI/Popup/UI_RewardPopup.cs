@@ -74,7 +74,7 @@ public class UI_RewardPopup : UI_Popup
         seq.Append(trans.DOScale(0.1f, 0.1f).SetEase(Ease.InOutSine).SetUpdate(true));
         seq.Play().OnComplete(() =>
         {
-            base.ClosePopupUI();
+            gameObject.SetActive(false);
         });
     }
 }

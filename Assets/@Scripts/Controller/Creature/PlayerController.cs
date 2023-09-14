@@ -19,6 +19,10 @@ public class PlayerController : CreatureController
 
     public float _ItemCollecRange { get; } = 1.0f;
 
+
+    //TODO : Å×½ºÆ®
+    public float CoolTime { get; set; } = 0.5f;
+
     float _exp;
     public float Exp
     {
@@ -89,13 +93,13 @@ public class PlayerController : CreatureController
 
     void CollectionItem()
     {
-      var items =  Managers.Game.Ground.GetObjectList(transform.position, _ItemCollecRange);
+        var items = Managers.Game.Ground.GetObjectList(transform.position, _ItemCollecRange);
 
         foreach (DropItemController item in items)
         {
             Vector3 dir = item.transform.position - transform.position;
 
-            if(item.ItemType == Define.ObjectType.Exp)
+            if (item.ItemType == Define.ObjectType.Exp)
             {
                 float cd = item.CollectDist * 1;
                 if (dir.sqrMagnitude <= cd * cd)
@@ -104,7 +108,7 @@ public class PlayerController : CreatureController
                 }
                 break;
             }
-            else if(item.ItemType != Define.ObjectType.Bomb) 
+            else if (item.ItemType != Define.ObjectType.Bomb)
             {
                 if (dir.sqrMagnitude <= item.CollectDist * item.CollectDist)
                 {
@@ -118,8 +122,8 @@ public class PlayerController : CreatureController
     private void HandleOnMoveChange(Vector2 dir)
     {
         _moveDir = dir;
-        if(Status != Define.CreatureState.Hit)
-          Status = Define.CreatureState.Moving;
+        if (Status != Define.CreatureState.Hit)
+            Status = Define.CreatureState.Moving;
     }
 
     void MovePlayer()
@@ -133,8 +137,8 @@ public class PlayerController : CreatureController
         }
         else
         {
-            if(Status != Define.CreatureState.Idle)
-              Status = Define.CreatureState.Idle;
+            if (Status != Define.CreatureState.Idle)
+                Status = Define.CreatureState.Idle;
         }
 
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -165,12 +169,17 @@ public class PlayerController : CreatureController
     }
     IEnumerator CoStartProjecTile()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.5f);
-       
+        WaitForSeconds wait = new WaitForSeconds(CoolTime);
+
         while (true)
         {
-            ProjectileController pc = Managers.Object.Spawn<ProjectileController>(_fireSocket.position, (int)SkillID);
-            pc.SetInfo(this, (_fireSocket.position - _indicator.position).normalized, 50.0f, 1);
+            int id = UnityEngine.Random.Range(1, 11);
+            SkillData data = null;
+            if (Managers.Data.SkillDatas.TryGetValue(id, out data) != false)
+            {
+                ProjectileController pc = Managers.Object.Spawn<ProjectileController>(_fireSocket.position, /*(int)SkillID*/id);
+                pc.SetInfo(this, (_fireSocket.position - _indicator.position).normalized, data);
+            }
 
             yield return wait;
         }

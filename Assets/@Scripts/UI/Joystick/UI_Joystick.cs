@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_Joystick : UI_Base, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class UI_Joystick : UI_Scene, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     enum Images
     {

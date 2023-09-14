@@ -46,7 +46,7 @@ public class UIManager
             name = typeof(T).Name;
 
 
-        GameObject go = Managers.Resource.Instantiate($"{name}.prefab");
+        GameObject go = Managers.Resource.Instantiate(name);
         if (parent != null)
             go.transform.SetParent(parent);
 
@@ -63,30 +63,30 @@ public class UIManager
         if (string.IsNullOrEmpty(name))
             name = typeof(T).Name;
 
-        GameObject go = Managers.Resource.Instantiate($"{name}.prefab", paren);
+        GameObject go = Managers.Resource.Instantiate(name, paren);
         go.transform.SetParent(paren);
 
         return go.GetComponent<T>();
     }
 
-    public void ShowSceneUI<T>(string key = null) where T : UI_Scene
+    public void ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
-        if (string.IsNullOrEmpty(key))
-            key = typeof(T).Name;
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
 
 
-        GameObject go = Managers.Resource.Instantiate($"{key}.prefab");
+        GameObject go = Managers.Resource.Instantiate(name);
 
         T sceneUI = go.GetOrAddComponent<T>();
         SceneUI = sceneUI;
     }
-    public T ShowPopupUI<T>(string key = null) where T : UI_Popup
+    public T ShowPopupUI<T>(string name = null) where T : UI_Popup
     {
-        if (string.IsNullOrEmpty(key))
-            key = typeof(T).Name;
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
 
 
-        UI_Popup popup = _popups.FirstOrDefault(f => f.name == key);
+        UI_Popup popup = _popups.FirstOrDefault(f => f.name == name);
 
         if (popup != null)
         {
@@ -94,8 +94,8 @@ public class UIManager
             return null;
         }
 
-        GameObject go = Managers.Resource.Instantiate($"{key}.prefab");
-        go.name = key;
+        GameObject go = Managers.Resource.Instantiate(name);
+        go.name = name;
         popup = go.GetOrAddComponent<T>();
         _popups.Push(popup);
 

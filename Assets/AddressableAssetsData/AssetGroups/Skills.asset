@@ -17,68 +17,13 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 217f6adb6f2e9a348b36f2f5e14aa916
   m_SerializeEntries:
-  - m_GUID: 93ae0fb8029fb924f955e9b2dc435098
-    m_Address: WaveForm.prefab
+  - m_GUID: 3b1f4826eabfbbe449b7d354419a7b1e
+    m_Address: SkillAnimator.controller
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
-  - m_GUID: 22180f5b4f9399645ba5404eb62cfb65
-    m_Address: Spark.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 38538f9d247e80d4db11405d39f4fcd0
-    m_Address: Pulse.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 147c86fda84dcf649b164c5982671a56
-    m_Address: Hits6.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: d7b57552f9a927d47bb06a8ec8f36f9a
-    m_Address: Hits5.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: e35e512272f0608438ab68c46735f8b8
-    m_Address: Hits4.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 25b3715f850b7eb40bfa49d6ce2496aa
-    m_Address: Hits3.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 31455e68db179cc4c9c6cf261a935bbe
-    m_Address: Hits2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 91658e3c0f77c4c469f4dad328dec3d2
-    m_Address: Hits1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 3982ecb3ed7ff6c4c88cad5aa0ed05c4
-    m_Address: Crossed.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 41825272f81e9a74e96d32e6181bea8a
-    m_Address: Charged.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 24715bffe89e2754b87abc5f18fb8321
-    m_Address: Bullets.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: ddbe2ec7f8d10c645998b9c95c0327c1
-    m_Address: Bolt.prefab
+  - m_GUID: 339f8f7df97d3c848b94a752a2403145
+    m_Address: Skill
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

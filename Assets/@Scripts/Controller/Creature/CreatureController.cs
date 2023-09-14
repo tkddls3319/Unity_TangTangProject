@@ -32,9 +32,9 @@ public class CreatureController : BaseController
     {
     }
 
-    public virtual void OnDamaged(BaseController attacker, int damage)
+    public virtual void OnDamaged(BaseController attacker, float damage)
     {
-        Data.Hp -= damage;
+        Data.Hp -= (int)damage;
         Status = Define.CreatureState.Hit;
 
         if (Data.Hp <= 0)

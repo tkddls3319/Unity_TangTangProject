@@ -22,7 +22,7 @@ public class SpawningPool : MonoBehaviour
             if (_maxMonsterCount > monsterCount)
             {
                 Vector2 spawnPos = Utils.GenerateMonsterSpawnPosition(Managers.Game.Player.PlayerCenterPos);
-                Managers.Object.Spawn<MonsterController>(spawnPos, Random.Range(1, 3));
+                Managers.Object.Spawn<MonsterController>(spawnPos, Random.Range(1, 6));
             }
 
             yield return new WaitForSeconds(_monsterInterval);

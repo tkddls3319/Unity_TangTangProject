@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class SkillController : BaseController
 {
-    public SkillData Skilldata { get; set; }
+    public SkillData Data { get; set; }
 }

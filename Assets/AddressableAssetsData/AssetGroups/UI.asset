@@ -18,42 +18,42 @@ MonoBehaviour:
   m_GUID: 473d5e8c1c41a7b48ae29646553e74ca
   m_SerializeEntries:
   - m_GUID: 8f34c2155e016ea4a84b76762fa9d37d
-    m_Address: UI_Joystick.prefab
+    m_Address: UI_Joystick
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: b89a2795a73e5614aa1061c6f2d78f40
-    m_Address: UI_GameScene.prefab
+    m_Address: UI_GameScene
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: d5b397fe643adfe4d882cfd6288d4e46
-    m_Address: UI_Test.prefab
+    m_Address: UI_Test
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: 5843f4ab389444a4fab48ef8dcaa39c5
-    m_Address: UI_LobbyScene.prefab
+    m_Address: UI_LobbyScene
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: e7ff445d5d9afae4fbe9ef56768f37ca
-    m_Address: UI_StaminaChargePopup.prefab
+    m_Address: UI_StaminaChargePopup
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: 98f148c803c2d7c44b6a4a9069cea0bc
-    m_Address: UI_RewardPopup.prefab
+    m_Address: UI_RewardPopup
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: d54b9ffa1ff021348bf0d284e13cd157
-    m_Address: UI_MaterialItem.prefab
+    m_Address: UI_MaterialItem
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: d2f84dab9922c6d4fba564927b6c5538
-    m_Address: UI_BattlePop.prefab
+    m_Address: UI_BattlePop
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

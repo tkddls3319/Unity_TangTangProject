@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class MonsterController : CreatureController
@@ -44,6 +46,16 @@ public class MonsterController : CreatureController
                 break;
         }
     }
+    public void SetInfo(CreatureData data)
+    {
+        Data = data.DeepCopy();
+
+        //Sprite spr = Managers.Resource.Load<Sprite>($"{Data.CreatureSprite}");
+        //GetComponent<SpriteRenderer>().sprite = spr;
+        AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{Data.CreatureAnimator}");
+        GetComponent<Animator>().runtimeAnimatorController = animator;
+        Init();
+    }
     public override void OnDead()
     {
         base.OnDead();
@@ -51,6 +63,9 @@ public class MonsterController : CreatureController
 
         ExpController exp = Managers.Object.Spawn<ExpController>(transform.position);
         exp.SetInfo(Managers.Game.GetGemInfo());
+
+
+
         Managers.Object.Dspawn(this);
     }
 

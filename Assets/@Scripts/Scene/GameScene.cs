@@ -39,7 +39,7 @@ public class GameScene : BaseScene
 
         Camera.main.GetOrAddComponent<CameraController>().Target = player.gameObject;
 
-        Managers.UI.MakeWorldSpace<UI_Joystick>();
+        Managers.UI.ShowSceneUI<UI_Joystick>();
         Managers.UI.ShowSceneUI<UI_GameScene>();
 
         if (_spawningPool == null)

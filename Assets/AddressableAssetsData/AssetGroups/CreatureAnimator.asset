@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CreatureAnimator
+  m_EditorClassIdentifier: 
+  m_GroupName: CreatureAnimator
+  m_Data:
+    m_SerializedData: []
+  m_GUID: df038add22167124ebdab0b7caf942c5
+  m_SerializeEntries:
+  - m_GUID: 47a2106de74b2a844ae2d53222ab76e8
+    m_Address: Monster_00Animator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 1ab0ea480f714ed41bb769029959fefc
+    m_Address: Monster_02Animator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: e9264fa8fd608614e9638079cd4c5516
+    m_Address: Monster_04Animator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: bbe4b2b2faced38439bf62c5022e5144
+    m_Address: Monster_03Animator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 9b794c629bf9e9e408e95abc03948cc3
+    m_Address: Monster_01Animator.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cf6b4dda2af5c8f4c98864a988628d2b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2f89c594bd2f758418243bf454bb91f4, type: 2}
+    - {fileID: 11400000, guid: 99bc0a7b0bde4ce409178ac50769c3df, type: 2}

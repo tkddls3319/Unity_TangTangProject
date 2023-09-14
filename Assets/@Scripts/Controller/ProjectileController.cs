@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class ProjectileController : SkillController
 {
     CreatureController _master;
     Vector3 _moveDir;
-    float _speed;
-    int _attack;
 
     public override bool Init()
     {
@@ -16,20 +15,24 @@ public class ProjectileController : SkillController
 
         return true;
     }
-
-    public void SetInfo(CreatureController master, Vector3 moveDir, float speed, int attack)
+    public void SetInfo(CreatureController master, Vector3 moveDir, SkillData skillData, Transform target = null)
     {
         _master = master;
+        Data = skillData;
         _moveDir = moveDir;
-        _speed = speed;
-        _attack = attack;
+        AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{Data.AnimatorName}");
+        Animator anim = GetComponent<Animator>();
+        anim.runtimeAnimatorController = animator;
+        anim.Play(Data.AnimationName);
 
-        StartCoroutine(CoDestroy(5f));
+        StartCoroutine(CoDestroy(Data.LifeTime));
+        Init();
+
     }
 
     public override void UpdateController()
     {
-        Vector3 nextPos = transform.position + _moveDir * _speed * Time.deltaTime;
+        Vector3 nextPos = transform.position + _moveDir * Data.Speed * Time.deltaTime;
         GetComponent<Rigidbody2D>().MovePosition(nextPos);
     }
 
@@ -48,7 +51,7 @@ public class ProjectileController : SkillController
         if (this.IsMyNotNullActive() == false)
             return;
 
-        mc.OnDamaged(_master, _attack + _master.Data.Damage);
+        mc.OnDamaged(_master, Data.Damage * _master.Data.Damage);
         Managers.Object.Dspawn(this);
     }
 }

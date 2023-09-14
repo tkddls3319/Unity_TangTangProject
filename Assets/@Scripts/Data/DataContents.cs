@@ -20,49 +20,68 @@ public class PlayerData
 public class SkillData
 {
     public int Id;
-    public int Damage;
+    public float Damage;
+    public float Speed;
+    public float Scala;
+    public float CoolTime;
     public float LifeTime;
+    public string AnimatorName;
+    public string AnimationName;
 
-    public SkillData(int id, int damage, float lifeTime)
+    public SkillData(int id, float damage, float speed, float scala, float coolTime, float lifeTime, string animatorName, string animationName)
     {
         Id = id;
         Damage = damage;
+        Speed = speed;
+        Scala = scala;
+        CoolTime = coolTime;
         LifeTime = lifeTime;
+        AnimatorName = animatorName;
+        AnimationName = animationName;
     }
 }
 
 public class CreatureData
 {
-    public int Id;
+    public int PrefabId;
     public int Damage;
     public int MaxHp;
     public int Hp;
     public float Speed;
     public int Exp;
-    public string PrefabString;
+    public string Name;
+    public string CreatureSprite;
+    public string CreatureAnimator;
 
     public CreatureData()
     {
     }
-    public CreatureData(int id, int damage, int maxHp, int hp, float speed, int exp, string prefabString)
+
+    public CreatureData(int prefabId, int damage, int maxHp, int hp, float speed, int exp, string name, string creatureSprite, string creatureAnimator)
     {
-        Id = id;
+        PrefabId = prefabId;
         Damage = damage;
         MaxHp = maxHp;
         Hp = hp;
         Speed = speed;
         Exp = exp;
-        PrefabString = prefabString;
+        Name = name;
+        CreatureSprite = creatureSprite;
+        CreatureAnimator = creatureAnimator;
     }
 
     public CreatureData DeepCopy()
     {
         CreatureData newCopy = new CreatureData();
+        newCopy.PrefabId = PrefabId;
         newCopy.Damage = Damage;
         newCopy.MaxHp = MaxHp;
         newCopy.Hp = Hp;
         newCopy.Speed = Speed;
         newCopy.Exp = Exp;
+        newCopy.Name = Name;
+        newCopy.CreatureSprite = CreatureSprite;
+        newCopy.CreatureAnimator = CreatureAnimator;
         return newCopy;
     }
 }

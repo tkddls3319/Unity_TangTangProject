@@ -31,7 +31,7 @@ public class ObjectManager
             if (Managers.Data.MonsterDatas.TryGetValue(id, out data) == false)
                 return null;
 
-            GameObject go = Managers.Resource.Instantiate(data.PrefabString);
+            GameObject go = Managers.Resource.Instantiate("Player");
             go.name = "Player";
             go.transform.position = pos;
 
@@ -48,74 +48,34 @@ public class ObjectManager
             if (Managers.Data.MonsterDatas.TryGetValue(id, out data) == false)
                 return null;
 
-            GameObject go = Managers.Resource.Instantiate(data.PrefabString);
+            GameObject go = Managers.Resource.Instantiate("Monster");
             go.transform.position = pos;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
-            mc.Data = data.DeepCopy();
             Monsters.Add(mc);
-            mc.Init();
+
+            mc.SetInfo(data);
+
 
             return mc as T;
         }
         else if (type == typeof(ProjectileController))
         {
-            string name = Define.SkillType.Bolt.ToString();
-            switch (id)
-            {
-                case (int)Define.SkillType.Bolt:
-                    name = Define.SkillType.Bolt.ToString();
-                    break;
-                case (int)Define.SkillType.Charged:
-                    name = Define.SkillType.Charged.ToString();
-                    break;
-                case (int)Define.SkillType.Crossed:
-                    name = Define.SkillType.Charged.ToString();
-                    break;
-                case (int)Define.SkillType.Hits1:
-                    name = Define.SkillType.Hits1.ToString();
-                    break;
-                case (int)Define.SkillType.Hits2:
-                    name = Define.SkillType.Hits2.ToString();
-                    break;
-                case (int)Define.SkillType.Hits3:
-                    name = Define.SkillType.Hits3.ToString();
-                    break;
-                case (int)Define.SkillType.Hits4:
-                    name = Define.SkillType.Hits4.ToString();
-                    break;
-                case (int)Define.SkillType.Hits5:
-                    name = Define.SkillType.Hits5.ToString();
-                    break;
-                case (int)Define.SkillType.Hits6:
-                    name = Define.SkillType.Hits6.ToString();
-                    break;
-                case (int)Define.SkillType.Pulse:
-                    name = Define.SkillType.Pulse.ToString();
-                    break;
-                case (int)Define.SkillType.Spark:
-                    name = Define.SkillType.Spark.ToString();
-                    break;
-                case (int)Define.SkillType.WaveForm:
-                    name = Define.SkillType.WaveForm.ToString();
-                    break;
+            SkillData data = null;
+            if (Managers.Data.SkillDatas.TryGetValue(id, out data) == false)
+                return null;
 
-            }
-            GameObject go = Managers.Resource.Instantiate($"{name}.prefab");
+            GameObject go = Managers.Resource.Instantiate("Skill");
             go.transform.position = pos;
-            Animator anim = go.GetComponent<Animator>();
-            anim.Play(name);
 
             ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
-
             Projectiles.Add(pc);
-            pc.Init();
 
             return pc as T;
         }
         else if (type == typeof(ExpController))
         {
-            GameObject go = Managers.Resource.Instantiate("Exp.prefab");
+            GameObject go = Managers.Resource.Instantiate("Exp");
             go.transform.position = pos;
             ExpController ec = go.GetOrAddComponent<ExpController>();
             Exps.Add(ec);
@@ -127,7 +87,7 @@ public class ObjectManager
         }
         else if( type == typeof(BombController))
         {
-            GameObject go = Managers.Resource.Instantiate("Bomb.prefab");
+            GameObject go = Managers.Resource.Instantiate("Bomb");
             go.transform.position = pos;
             BombController bc = go.GetOrAddComponent<BombController>();
             DropItems.Add(bc);

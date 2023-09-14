@@ -17,33 +17,18 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4749151d7b51b1047a4bd4b377cc1e30
   m_SerializeEntries:
-  - m_GUID: 13969ecbff899bd43ae74d722eeb0b2e
-    m_Address: Player.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: 91ca74b5af57433469cfd92c4833222b
-    m_Address: Zombe.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
   - m_GUID: 3eb14cc8d99326147b3911092b101c9d
-    m_Address: Exp.prefab
+    m_Address: Exp
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: 06ebb57f1cea58f41be403bdbb7cbb35
-    m_Address: Bomb.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LoadPrefab
-  - m_GUID: c4bae3724fae9df448f4303c05ac8654
-    m_Address: Skull.prefab
+    m_Address: Bomb
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: d79e0eeb29c44e444bb16b9210c3975d
-    m_Address: EventSystem.prefab
+    m_Address: EventSystem
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
