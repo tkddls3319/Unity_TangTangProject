@@ -25,7 +25,7 @@ public class GameScene : BaseScene
     {
         Managers.Game.TimeRemaining -= Time.deltaTime;
 
-        if (Managers.Game.TimeRemaining < 30)
+        if (Managers.Game.TimeRemaining < 55)// 5초에 한번씩
         {
             SpawnWaveReward();
         }
@@ -62,18 +62,21 @@ public class GameScene : BaseScene
     {
         Managers.Game.TimeRemaining = 60;
 
-        DropItemType spawnType = (DropItemType)UnityEngine.Random.Range(0, 3);
+        DropItemType spawnType = (DropItemType)UnityEngine.Random.Range(0, 2);
 
-        Vector3 randPos = new Vector2(Random.Range(-3, 3), Random.Range(-3, 3));
+        float playerX = Managers.Game.Player.PlayerCenterPos.x;
+        float playerY = Managers.Game.Player.PlayerCenterPos.y;
+        Vector3 randPos = new Vector2(Random.Range(playerX - 3, playerX + 3), Random.Range(playerY - 3, playerY + 3));
 
-        //todo : switch 살리기
-        Managers.Object.Spawn<BombController>(randPos).SetInfo();
-        //switch (spawnType)
-        //{
-        //    case DropItemType.Bomb:
-        //        Managers.Object.Spawn<BombController>(randPos).SetInfo();
-        //        break;
-        //}
+        switch (spawnType)
+        {
+            case DropItemType.Bomb:
+                Managers.Object.Spawn<BombController>(randPos).SetInfo();
+                break;
+            case DropItemType.Potion:
+                Managers.Object.Spawn<PotionController>(randPos).SetInfo();
+                break;
+        }
     }
     public override void Clear()
     {

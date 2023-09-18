@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -64,6 +66,13 @@ public class PlayerController : CreatureController
         StartProjectTile();
 
         return true;
+    }
+
+    public void Healing()
+    {
+        int randHp = UnityEngine.Random.Range(60, 150);
+        Data.Hp += randHp;
+        Managers.Object.ShowDamageFont(PlayerCenterPos, 0, randHp, transform);
     }
     public override void UpdateAnimation()
     {

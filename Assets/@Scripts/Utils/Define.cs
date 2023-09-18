@@ -85,8 +85,8 @@ public static class Define
     public enum DropItemType
     {
         Potion,
+        Bomb,
         Magnet,
         DropBox,
-        Bomb
     }
 }

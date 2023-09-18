@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Timeline;
 using UnityEngine;
 
@@ -16,15 +17,25 @@ public class CreatureController : BaseController
             UpdateAnimation();
         }
     }
+    public Vector3 CenterPosition
+    {
+        get
+        {
+            return _offset.bounds.center;
+        }
+    }
+    private Collider2D _offset;
     public CreatureData Data { get; set; }
 
     protected Animator _animator;
-
+    public virtual SkillBook Skills { get; set; }
     public override bool Init()
     {
         base.Init();
 
+      Skills = gameObject.GetOrAddComponent<SkillBook>();
         _animator = gameObject.GetComponent<Animator>();
+        _offset = GetComponent<Collider2D>();
         return true;
     }
 
@@ -37,6 +48,7 @@ public class CreatureController : BaseController
         Data.Hp -= (int)damage;
         Status = Define.CreatureState.Hit;
 
+        Managers.Object.ShowDamageFont(CenterPosition, damage, 0, transform);
         if (Data.Hp <= 0)
         {
             Data.Hp = 0;

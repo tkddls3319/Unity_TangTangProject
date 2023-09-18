@@ -26,7 +26,7 @@ public class DataManager
         PlayerDatas.Add(9, new PlayerData(level: 9, maxExp: 550));
         #endregion
 
-        //        public int Id;
+        //public int Id;
         //public int Damage;
         //public float Scala;
         //public float CoolTime;
@@ -48,7 +48,7 @@ public class DataManager
         #endregion
 
         #region Monster
-        MonsterDatas.Add(0, new CreatureData(prefabId: 0, damage: 10, maxHp: 200, hp: 200, speed: 5.0f, exp: 9999, name: "Player", creatureSprite: "", creatureAnimator: ""));
+        MonsterDatas.Add(0, new CreatureData(prefabId: 0, damage: 10, maxHp: 1000, hp: 1000, speed: 5.0f, exp: 9999, name: "Player", creatureSprite: "", creatureAnimator: ""));
         MonsterDatas.Add(1, new CreatureData(prefabId: 1, damage: 10, maxHp: 10, hp: 10, speed: 1.0f, exp: 1, name: "Zombe1", creatureSprite: "Monster_00.sprite", creatureAnimator: "Monster_00Animator.controller"));
         MonsterDatas.Add(2, new CreatureData(prefabId: 2, damage: 15, maxHp: 20, hp: 20, speed: 1.2f, exp: 2, name: "Zombe2", creatureSprite: "Monster_01.sprite", creatureAnimator: "Monster_01Animator.controller"));
         MonsterDatas.Add(3, new CreatureData(prefabId: 3, damage: 20, maxHp: 30, hp: 30, speed: 1.5f, exp: 3, name: "Skull1", creatureSprite: "Monster_02.sprite", creatureAnimator: "Monster_02Animator.controller"));

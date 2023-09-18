@@ -19,6 +19,11 @@ public class ObjectManager
     {
 
     }
+    public void ShowDamageFont(Vector2 pos, float damage, float healAmount, Transform parent)
+    {
+        GameObject go = Managers.Resource.Instantiate("DamageText");
+        go.GetOrAddComponent<DamageText>().SetInfo(pos, damage, healAmount, parent);
+    }
 
     public T Spawn<T>(Vector3 pos, int id = 0) where T : BaseController
     {
@@ -96,6 +101,18 @@ public class ObjectManager
             Managers.Game.Ground.Add(bc);
             return bc as T;
         }
+        else if( type == typeof(PotionController)) 
+        {
+            GameObject go = Managers.Resource.Instantiate("Potion");
+            go.transform.position = pos;
+
+            PotionController pc = go.GetOrAddComponent<PotionController>();
+            DropItems.Add(pc);
+            pc.Init();
+
+            Managers.Game.Ground.Add(pc);
+            return pc as T;
+        }
         return null;
     }
 
@@ -128,9 +145,15 @@ public class ObjectManager
         }
         else if (type == typeof(BombController))
         {
-            DropItems.Remove(obj as ExpController);
+            DropItems.Remove(obj as BombController);
             Managers.Resource.Destroy(obj.gameObject);
             Managers.Game.Ground.Remove(obj as BombController);
+        }
+        else if (type == typeof(PotionController))
+        {
+            DropItems.Remove(obj as PotionController);
+            Managers.Resource.Destroy(obj.gameObject);
+            Managers.Game.Ground.Remove(obj as PotionController);
         }
     }
 
