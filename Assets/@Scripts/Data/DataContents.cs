@@ -33,33 +33,36 @@ public class SkillInfo
 public class SkillData
 {
     public int Id;
-    public Dictionary<int, SkillInfo> SkillInfos;
+    public string Name;
     public float Speed;
     public float Scala;
     public float CoolTime;
     public float LifeTime;
     public string AnimatorName;
     public string AnimationName;
+    public Dictionary<int, SkillInfo> SkillInfos;
 
     public SkillData()
     {
     }
 
-    public SkillData(int id, Dictionary<int, SkillInfo> skillInfos, float speed, float scala, float coolTime, float lifeTime, string animatorName, string animationName)
+    public SkillData(int id, string name,  float speed, float scala, float coolTime, float lifeTime, string animatorName, string animationName, Dictionary<int, SkillInfo> skillInfos)
     {
         Id = id;
-        SkillInfos = skillInfos;
+        Name = name;
         Speed = speed;
         Scala = scala;
         CoolTime = coolTime;
         LifeTime = lifeTime;
         AnimatorName = animatorName;
         AnimationName = animationName;
+        SkillInfos = skillInfos;
     }
 
     public SkillData DeepCopy()
     {
         SkillData newCopy = new SkillData();
+        newCopy.Name = Name;
         newCopy.Id = Id;
         newCopy.SkillInfos = SkillInfos;
         newCopy.Speed = Speed;

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBolt : RepeatSkill
+public class ElectricBolt : RepeatSkill
 {
     private void Awake()
     {
         //todo : 타입정의 다시
-        SkillType = Define.SkillType.EnergyBolt;
+        SkillType = Define.SkillType.ElectricBolt;
     }
 
     protected override void DoSkillJob()
@@ -16,15 +16,15 @@ public class EnergyBolt : RepeatSkill
     }
     IEnumerator SetEnergeBolt()
     {
-        if(Managers.Game.Player != null)
+        if (Managers.Game.Player != null)
         {
             List<MonsterController> targets = Managers.Object.GetNearsMonster();
-            if(targets == null)
+            if (targets == null)
                 yield break;
 
-            foreach(MonsterController target in targets) 
+            foreach (MonsterController target in targets)
             {
-                Vector3 dir = (target.CenterPosition - Managers.Game.Player.CenterPosition).normalized;
+                Vector3 dir = Managers.Game.Player.MoveDir;
                 Vector3 startPos = Managers.Game.Player.CenterPosition;
 
                 GenerateProjectile(Owner, startPos, dir, target.CenterPosition, this);

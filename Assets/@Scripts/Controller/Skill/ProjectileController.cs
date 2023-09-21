@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AdaptivePerformance.Provider;
+using UnityEngine.UIElements;
 
 public class ProjectileController : SkillBase
 {
@@ -27,7 +28,7 @@ public class ProjectileController : SkillBase
         _moveDir = moveDir;
         _spawnPos = startPos;
         _target = targetPos;
-
+        gameObject.transform.localScale = Vector3.one * Skill.SkillData.Scala;
 
         AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{SkillData.AnimatorName}");
         Animator anim = GetComponent<Animator>();
@@ -36,6 +37,10 @@ public class ProjectileController : SkillBase
         {
             case Define.SkillType.EnergyBolt:
                 StartCoroutine( CoEnergyBolt());
+                break;
+
+            case Define.SkillType.ElectricBolt:
+                StartCoroutine(CoElectricBolt());
                 break;
         } 
 
@@ -47,8 +52,8 @@ public class ProjectileController : SkillBase
 
     public override void UpdateController()
     {
-
     }
+    #region 스킬 코루틴
     IEnumerator CoEnergyBolt()
     {
         while (true)
@@ -58,7 +63,16 @@ public class ProjectileController : SkillBase
             yield return new WaitForFixedUpdate();
         }
     }
-
+    IEnumerator CoElectricBolt()
+    {
+        while (true)
+        {
+            Vector3 nextPos = transform.position + _moveDir * Skill.SkillData.Speed * Time.deltaTime;
+            GetComponent<Rigidbody2D>().MovePosition(nextPos);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+    #endregion
     IEnumerator CoDestroy(float lifeTime)
     {
         yield return new WaitForSeconds(lifeTime);

@@ -16,8 +16,9 @@ public class SkillBook : MonoBehaviour
         PlayerController player = Managers.Game.Player;
         RepeatSkill skill = gameObject.AddComponent(Type.GetType(type.ToString())) as RepeatSkill;
 
-        skill.ActivateSkill((int)type);
         skill.Owner = GetComponent<CreatureController>();
         SkillList.Add(skill);
+
+        skill.ActivateSkill((int)type);
     }
 }

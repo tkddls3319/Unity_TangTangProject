@@ -47,7 +47,7 @@ public class SkillBase : BaseController
 
     protected virtual void GenerateProjectile(CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos, SkillBase skill)
     {
-        ProjectileController pc = Managers.Object.Spawn<ProjectileController>(startPos, 1);
+        ProjectileController pc = Managers.Object.Spawn<ProjectileController>(startPos, (int)SkillType);
         pc.SetInfo(owner, startPos, dir, targetPos, skill);
     }
 }

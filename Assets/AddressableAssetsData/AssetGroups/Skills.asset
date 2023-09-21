@@ -23,7 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: 339f8f7df97d3c848b94a752a2403145
-    m_Address: Skill
+    m_Address: EnergyBolt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: dbc5e73534521b340a98eb99a2c7e632
+    m_Address: ElectricBolt
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

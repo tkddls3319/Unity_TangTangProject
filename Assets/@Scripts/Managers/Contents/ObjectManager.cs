@@ -66,6 +66,10 @@ public class ObjectManager
         }
         else if (type == typeof(ProjectileController))
         {
+            SkillData data = null;
+            if (Managers.Data.SkillDatas.TryGetValue(id, out data) == false)
+                return null;
+
             GameObject go = Managers.Resource.Instantiate("Skill", pooling: true);
             go.transform.position = pos;
 

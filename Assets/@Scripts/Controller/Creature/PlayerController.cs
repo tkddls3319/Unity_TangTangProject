@@ -5,11 +5,10 @@ using System.Security.Cryptography;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class PlayerController : CreatureController
 {
-    Vector2 _moveDir = Vector2.zero;
+   public  Vector2 MoveDir = Vector2.zero;
 
     Transform _indicator;
     Transform _fireSocket;
@@ -114,7 +113,10 @@ public class PlayerController : CreatureController
     }
     private void Start()
     {
+        #region Skill µî·Ï
         Skills.AddSkill(Define.SkillType.EnergyBolt);
+        Skills.AddSkill(Define.SkillType.ElectricBolt);
+        #endregion
     }
     public override bool Init()
     {
@@ -173,7 +175,6 @@ public class PlayerController : CreatureController
         {
             Vector3 dir = item.transform.position - transform.position;
 
-
             switch (item.ItemType)
             {
                 case Define.ObjectType.Bomb:
@@ -195,17 +196,17 @@ public class PlayerController : CreatureController
 
     private void HandleOnMoveChange(Vector2 dir)
     {
-        _moveDir = dir;
+        MoveDir = dir;
         if (Status != Define.CreatureState.Hit)
             Status = Define.CreatureState.Moving;
     }
 
     void MovePlayer()
     {
-        Vector3 dir = _moveDir * Speed * Time.deltaTime;
+        Vector3 dir = MoveDir * Speed * Time.deltaTime;
         transform.position += dir;
 
-        if (_moveDir != Vector2.zero)
+        if (MoveDir != Vector2.zero)
         {
             _indicator.eulerAngles = new Vector3(0, 0, MathF.Atan2(-dir.x, dir.y) * 180 / MathF.PI);
         }

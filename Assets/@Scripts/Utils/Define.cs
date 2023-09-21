@@ -52,7 +52,8 @@ public static class Define
 
     public enum SkillType
     {
-        EnergyBolt,
+        EnergyBolt = 0,
+        ElectricBolt = 3,
         Charged,
         Crossed,
         Hits1,
