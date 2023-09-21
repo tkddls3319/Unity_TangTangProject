@@ -23,7 +23,7 @@ public class UI_HPBar : UI_Base
 
     private void LateUpdate()
     {
-        float ratio = _player.Data.Hp / (float)_player.Data.MaxHp;
+        float ratio = _player.Hp / (float)_player.MaxHp;
         SetHpRatio(ratio);
     }
 

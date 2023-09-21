@@ -31,7 +31,8 @@ public class UI_GameScene : UI_Scene
     }
     enum Texts
     {
-        KillValueText
+        KillValueText,
+        LevelValueText
     }
     public override bool Init()
     {
@@ -45,7 +46,7 @@ public class UI_GameScene : UI_Scene
 
         GetButton((int)Buttons.BtnBolt).gameObject.BindEvent(() =>
         {
-            Managers.Game.Player.SkillID = Define.SkillType.Bolt;
+            Managers.Game.Player.SkillID = Define.SkillType.EnergyBolt;
         });
         GetButton((int)Buttons.BtnCharged).gameObject.BindEvent(() =>
         {
@@ -105,6 +106,7 @@ public class UI_GameScene : UI_Scene
     {
         GetObject((int)GameObjects.ExpBar).GetComponent<Slider>().value = Managers.Game.Player.Exp;
         GetTMP_Text((int)Texts.KillValueText).text = $"{Managers.Game.Player.KillCount}";
+        GetTMP_Text((int)Texts.LevelValueText).text = $"{Managers.Game.Player.Level}";
     }
 
 

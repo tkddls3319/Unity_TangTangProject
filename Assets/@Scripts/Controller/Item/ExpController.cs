@@ -51,6 +51,13 @@ public class ExpController : DropItemController
 
         return true;
     }
+    public override void CompleteGetItem()
+    {
+        base.CompleteGetItem();
+
+        Managers.Game.Player.Exp += _expInfo.ExpAmount;
+        Managers.Object.Dspawn(this);
+    }
 
     public void SetInfo(ExpInfo expInfo)
     {
@@ -67,9 +74,9 @@ public class ExpController : DropItemController
         {
             DG.Tweening.Sequence seqeu = DOTween.Sequence();
             Vector3 dir = (transform.position - Managers.Game.Player.PlayerCenterPos).normalized;
-            Vector3 target = gameObject.transform.position + dir * 1.5f;
+            Vector3 target = gameObject.transform.position + dir * 1.0f;
 
-            seqeu.Append(transform.DOMove(target, 0.3f).SetEase(Ease.Linear)).OnComplete(() =>
+            seqeu.Append(transform.DOMove(target, 0.2f).SetEase(Ease.Linear)).OnComplete(() =>
             {
                 _coMoveToPlayer = StartCoroutine(CoMoveToPlayer());
             });
@@ -82,10 +89,9 @@ public class ExpController : DropItemController
             float dist = Vector3.Distance(gameObject.transform.position, Managers.Game.Player.PlayerCenterPos);
             transform.position = Vector3.MoveTowards(transform.position, Managers.Game.Player.PlayerCenterPos, Time.deltaTime * 30.0f);
 
-            if (dist < 0.2f)
+            if (dist < 0.1f)
             {
-                Managers.Game.Player.Exp += _expInfo.ExpAmount;
-                Managers.Object.Dspawn(this);
+                CompleteGetItem();
                 yield break;
             }
 

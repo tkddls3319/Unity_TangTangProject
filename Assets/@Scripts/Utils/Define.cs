@@ -25,6 +25,7 @@ public static class Define
         Monster,
         Exp,
         Bomb,
+        Potion,
     }
 
     public enum UIEvent
@@ -51,8 +52,7 @@ public static class Define
 
     public enum SkillType
     {
-        Bullets,
-        Bolt,
+        EnergyBolt,
         Charged,
         Crossed,
         Hits1,

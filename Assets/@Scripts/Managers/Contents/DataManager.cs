@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class DataManager
 {
-    public Dictionary<int, PlayerData> PlayerDatas { get; private set; } = new Dictionary<int, PlayerData>();
+    public Dictionary<int, LevelData> LevelDatas { get; private set; } = new Dictionary<int, LevelData>();
     public Dictionary<int, SkillData> SkillDatas { get; private set; } = new Dictionary<int, SkillData>();
     public Dictionary<int, CreatureData> MonsterDatas { get; private set; } = new Dictionary<int, CreatureData>();
     public Dictionary<int, SprietData> SpriteDatas { get; private set; } = new Dictionary<int, SprietData>();
@@ -15,15 +15,15 @@ public class DataManager
     public void Init()
     {
         #region Player
-        PlayerDatas.Add(1, new PlayerData(level: 1, maxExp: 50));
-        PlayerDatas.Add(2, new PlayerData(level: 2, maxExp: 70));
-        PlayerDatas.Add(3, new PlayerData(level: 3, maxExp: 110));
-        PlayerDatas.Add(4, new PlayerData(level: 4, maxExp: 150));
-        PlayerDatas.Add(5, new PlayerData(level: 5, maxExp: 200));
-        PlayerDatas.Add(6, new PlayerData(level: 6, maxExp: 250));
-        PlayerDatas.Add(7, new PlayerData(level: 7, maxExp: 350));
-        PlayerDatas.Add(8, new PlayerData(level: 8, maxExp: 450));
-        PlayerDatas.Add(9, new PlayerData(level: 9, maxExp: 550));
+        LevelDatas.Add(1, new LevelData(level: 1, maxExp: 50));
+        LevelDatas.Add(2, new LevelData(level: 2, maxExp: 70));
+        LevelDatas.Add(3, new LevelData(level: 3, maxExp: 110));
+        LevelDatas.Add(4, new LevelData(level: 4, maxExp: 150));
+        LevelDatas.Add(5, new LevelData(level: 5, maxExp: 200));
+        LevelDatas.Add(6, new LevelData(level: 6, maxExp: 250));
+        LevelDatas.Add(7, new LevelData(level: 7, maxExp: 350));
+        LevelDatas.Add(8, new LevelData(level: 8, maxExp: 450));
+        LevelDatas.Add(9, new LevelData(level: 9, maxExp: 550));
         #endregion
 
         //public int Id;
@@ -35,16 +35,15 @@ public class DataManager
         //public string AnimationName;
 
         #region Skill
-        SkillDatas.Add(1, new SkillData(id: 1, damage: 1.0f, speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 1.0f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_01Ani")); ;
-        SkillDatas.Add(2, new SkillData(id: 2, damage: 2.0f, speed: 30.0f, scala: 1.1f, coolTime: 0.1f, lifeTime: 1.2f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_02Ani"));
-        SkillDatas.Add(3, new SkillData(id: 3, damage: 3.0f, speed: 50.0f, scala: 1.2f, coolTime: 0.2f, lifeTime: 1.4f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_03Ani"));
-        SkillDatas.Add(4, new SkillData(id: 4, damage: 4.0f, speed: 30.0f, scala: 1.3f, coolTime: 0.3f, lifeTime: 1.6f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_04Ani"));
-        SkillDatas.Add(5, new SkillData(id: 5, damage: 5.0f, speed: 50.0f, scala: 1.4f, coolTime: 0.4f, lifeTime: 1.8f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_05Ani"));
-        SkillDatas.Add(6, new SkillData(id: 6, damage: 6.0f, speed: 30.0f, scala: 1.5f, coolTime: 0.5f, lifeTime: 2.0f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_06Ani"));
-        SkillDatas.Add(7, new SkillData(id: 7, damage: 7.0f, speed: 50.0f, scala: 1.6f, coolTime: 0.6f, lifeTime: 2.2f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_07Ani"));
-        SkillDatas.Add(8, new SkillData(id: 8, damage: 8.0f, speed: 30.0f, scala: 1.7f, coolTime: 0.7f, lifeTime: 2.4f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_08Ani"));
-        SkillDatas.Add(9, new SkillData(id: 9, damage: 9.0f, speed: 50.0f, scala: 1.8f, coolTime: 0.8f, lifeTime: 2.6f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_09Ani"));
-        SkillDatas.Add(10, new SkillData(id: 10, damage: 10.0f, speed: 30.0f, scala: 1.9f, coolTime: 0.9f, lifeTime: 2.8f, animatorName: "SkillAnimator.controller", animationName: "SkillIcon_10Ani"));
+        SkillDatas.Add(0, new SkillData(id: 1, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 30.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 10.0f, scala: 3, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_01Ani"));
+        SkillDatas.Add(1, new SkillData(id: 2, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 40.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_02Ani"));
+        SkillDatas.Add(2, new SkillData(id: 3, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 50.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_03Ani"));
+        SkillDatas.Add(3, new SkillData(id: 4, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 60.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_04Ani"));
+        SkillDatas.Add(4, new SkillData(id: 5, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 70.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_05Ani"));
+        SkillDatas.Add(5, new SkillData(id: 6, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 80.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_06Ani"));
+        SkillDatas.Add(6, new SkillData(id: 7, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 90.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_07Ani"));
+        SkillDatas.Add(7, new SkillData(id: 8, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 100.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } },speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f , animatorName: "SkillAnimator.controller", animationName: "SkillIcon_08Ani"));
+        SkillDatas.Add(8, new SkillData(id: 9, new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 110.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }, speed: 50.0f, scala: 1, coolTime: 0.5f, lifeTime: 5.0f,  animatorName: "SkillAnimator.controller", animationName: "SkillIcon_09Ani"));
         #endregion
 
         #region Monster

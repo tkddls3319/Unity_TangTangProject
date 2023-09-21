@@ -46,7 +46,7 @@ public class UIManager
             name = typeof(T).Name;
 
 
-        GameObject go = Managers.Resource.Instantiate(name);
+        GameObject go = Managers.Resource.Instantiate(name, pooling: true);
         if (parent != null)
             go.transform.SetParent(parent);
 

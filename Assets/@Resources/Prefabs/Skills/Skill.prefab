@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -4478499750551449123}
   - component: {fileID: -8512873926507230395}
   - component: {fileID: -3016716054950165700}
-  - component: {fileID: 7251546357531237319}
   - component: {fileID: -4495421196214245503}
   m_Layer: 0
   m_Name: Skill
@@ -146,19 +145,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7251546357531237319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711156599629076760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afa7dfe91318124786f100c742de592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsUsing: 1
 --- !u!114 &-4495421196214245503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b4cd0e3c89f9a42a39527ebe7c8f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Skill: {fileID: 0}

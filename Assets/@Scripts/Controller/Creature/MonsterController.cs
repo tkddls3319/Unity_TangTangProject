@@ -26,7 +26,7 @@ public class MonsterController : CreatureController
             Status = Define.CreatureState.Moving;
 
         Vector3 dir = pc.transform.position - transform.position;
-        Vector3 nextPos = transform.position + dir.normalized * Time.deltaTime * Data.Speed;
+        Vector3 nextPos = transform.position + dir.normalized * Time.deltaTime * Speed;
 
         GetComponent<Rigidbody2D>().MovePosition(nextPos);
         GetComponent<SpriteRenderer>().flipX = dir.x < 0;
@@ -48,8 +48,12 @@ public class MonsterController : CreatureController
     }
     public void SetInfo(CreatureData data)
     {
-        Data = data.DeepCopy();
-
+        CreatureData Data = data.DeepCopy();
+        Damage = Data.Damage;
+        MaxHp = Data.MaxHp;
+        Hp = Data.Hp;
+        Speed = Data.Speed;
+        Exp = Data.Exp;
         //Sprite spr = Managers.Resource.Load<Sprite>($"{Data.CreatureSprite}");
         //GetComponent<SpriteRenderer>().sprite = spr;
         AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{Data.CreatureAnimator}");
@@ -75,6 +79,6 @@ public class MonsterController : CreatureController
         if (pc == null)
             return;
 
-        pc.OnDamaged(this, Data.Damage);
+        pc.OnDamaged(this, Damage);
     }
 }

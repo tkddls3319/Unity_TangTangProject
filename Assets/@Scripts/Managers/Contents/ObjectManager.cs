@@ -21,7 +21,7 @@ public class ObjectManager
     }
     public void ShowDamageFont(Vector2 pos, float damage, float healAmount, Transform parent)
     {
-        GameObject go = Managers.Resource.Instantiate("DamageText");
+        GameObject go = Managers.Resource.Instantiate("DamageText", pooling: true);
         go.GetOrAddComponent<DamageText>().SetInfo(pos, damage, healAmount, parent);
     }
 
@@ -42,7 +42,7 @@ public class ObjectManager
 
             Player = go.GetComponent<PlayerController>();
             //Player.Init();
-            Player.Data = data.DeepCopy();
+            Player.ContinueInfoSettion(data);
 
             Managers.Game.Player = Player;
             return Player as T;
@@ -53,7 +53,7 @@ public class ObjectManager
             if (Managers.Data.MonsterDatas.TryGetValue(id, out data) == false)
                 return null;
 
-            GameObject go = Managers.Resource.Instantiate("Monster");
+            GameObject go = Managers.Resource.Instantiate("Monster", pooling: true);
             go.transform.position = pos;
 
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
@@ -66,11 +66,7 @@ public class ObjectManager
         }
         else if (type == typeof(ProjectileController))
         {
-            SkillData data = null;
-            if (Managers.Data.SkillDatas.TryGetValue(id, out data) == false)
-                return null;
-
-            GameObject go = Managers.Resource.Instantiate("Skill");
+            GameObject go = Managers.Resource.Instantiate("Skill", pooling: true);
             go.transform.position = pos;
 
             ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
@@ -80,7 +76,7 @@ public class ObjectManager
         }
         else if (type == typeof(ExpController))
         {
-            GameObject go = Managers.Resource.Instantiate("Exp");
+            GameObject go = Managers.Resource.Instantiate("Exp", pooling: true);
             go.transform.position = pos;
             ExpController ec = go.GetOrAddComponent<ExpController>();
             Exps.Add(ec);
@@ -92,7 +88,7 @@ public class ObjectManager
         }
         else if( type == typeof(BombController))
         {
-            GameObject go = Managers.Resource.Instantiate("Bomb");
+            GameObject go = Managers.Resource.Instantiate("Bomb", pooling: true);
             go.transform.position = pos;
             BombController bc = go.GetOrAddComponent<BombController>();
             DropItems.Add(bc);
@@ -103,7 +99,7 @@ public class ObjectManager
         }
         else if( type == typeof(PotionController)) 
         {
-            GameObject go = Managers.Resource.Instantiate("Potion");
+            GameObject go = Managers.Resource.Instantiate("Potion", pooling: true);
             go.transform.position = pos;
 
             PotionController pc = go.GetOrAddComponent<PotionController>();
@@ -169,6 +165,27 @@ public class ObjectManager
             if (monster.ObjectType == Define.ObjectType.Monster)
                 monster.OnDead();
         }
+    }
+
+    public List<MonsterController> GetNearsMonster(int count =1)
+    {
+        List<MonsterController> monsters = Monsters.OrderBy(m => (Player.CenterPosition - m.CenterPosition).sqrMagnitude).ToList();
+
+        int min = Math.Min(count, monsters.Count);
+
+        List<MonsterController> nearsMonsters = monsters.Take(min).ToList();
+
+        if (nearsMonsters.Count == 0)
+            return null;
+
+        // 요소 개수가 count와 다른 경우 마지막 요소 반복해서 추가
+        while (nearsMonsters.Count < count)
+        {
+            nearsMonsters.Add(nearsMonsters.Last());
+        }
+
+        return nearsMonsters;
+
     }
 
     public void CollectAllDropItem()

@@ -2,25 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static Define;
 
-public class PlayerData
+public class LevelData
 {
     public int Level;
     public float MaxExp;
 
-    public PlayerData(int level, float maxExp)
+    public LevelData(int level, float maxExp)
     {
         Level = level;
         MaxExp = maxExp;
     }
 }
 
+public class SkillInfo
+{
+    public int Level;
+    public float Damage;
+
+
+    public SkillInfo(int level, float damage)
+    {
+        Level = level;
+        Damage = damage;
+    }
+}
 
 public class SkillData
 {
     public int Id;
-    public float Damage;
+    public Dictionary<int, SkillInfo> SkillInfos;
     public float Speed;
     public float Scala;
     public float CoolTime;
@@ -28,16 +41,34 @@ public class SkillData
     public string AnimatorName;
     public string AnimationName;
 
-    public SkillData(int id, float damage, float speed, float scala, float coolTime, float lifeTime, string animatorName, string animationName)
+    public SkillData()
+    {
+    }
+
+    public SkillData(int id, Dictionary<int, SkillInfo> skillInfos, float speed, float scala, float coolTime, float lifeTime, string animatorName, string animationName)
     {
         Id = id;
-        Damage = damage;
+        SkillInfos = skillInfos;
         Speed = speed;
         Scala = scala;
         CoolTime = coolTime;
         LifeTime = lifeTime;
         AnimatorName = animatorName;
         AnimationName = animationName;
+    }
+
+    public SkillData DeepCopy()
+    {
+        SkillData newCopy = new SkillData();
+        newCopy.Id = Id;
+        newCopy.SkillInfos = SkillInfos;
+        newCopy.Speed = Speed;
+        newCopy.Scala = Scala;
+        newCopy.CoolTime = CoolTime;
+        newCopy.LifeTime = LifeTime;
+        newCopy.AnimatorName = AnimatorName;
+        newCopy.AnimationName = AnimationName;
+        return newCopy;
     }
 }
 
@@ -48,7 +79,7 @@ public class CreatureData
     public int MaxHp;
     public int Hp;
     public float Speed;
-    public int Exp;
+    public float Exp;
     public string Name;
     public string CreatureSprite;
     public string CreatureAnimator;
@@ -57,7 +88,7 @@ public class CreatureData
     {
     }
 
-    public CreatureData(int prefabId, int damage, int maxHp, int hp, float speed, int exp, string name, string creatureSprite, string creatureAnimator)
+    public CreatureData(int prefabId, int damage, int maxHp, int hp, float speed, float exp, string name, string creatureSprite, string creatureAnimator)
     {
         PrefabId = prefabId;
         Damage = damage;

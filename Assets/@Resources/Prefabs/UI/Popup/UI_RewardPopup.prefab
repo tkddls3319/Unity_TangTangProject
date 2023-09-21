@@ -1041,9 +1041,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1563401018438079930, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_fontSize
+      value: 41.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2803725733916929368, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
       propertyPath: m_Name
       value: UI_MaterialItem (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314028517084493673, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2487793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497881256965423200, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.0164795
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
@@ -1143,9 +1155,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1563401018438079930, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_fontSize
+      value: 41.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2803725733916929368, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
       propertyPath: m_Name
       value: UI_MaterialItem (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314028517084493673, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2487793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497881256965423200, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.0164795
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
@@ -1245,9 +1269,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1563401018438079930, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_fontSize
+      value: 41.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2803725733916929368, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
       propertyPath: m_Name
       value: UI_MaterialItem (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314028517084493673, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2487793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497881256965423200, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.0164795
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
@@ -1347,9 +1383,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1563401018438079930, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_fontSize
+      value: 41.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2803725733916929368, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
       propertyPath: m_Name
       value: UI_MaterialItem (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314028517084493673, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2487793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497881256965423200, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.0164795
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
@@ -1449,9 +1497,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1563401018438079930, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_fontSize
+      value: 41.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2803725733916929368, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
       propertyPath: m_Name
       value: UI_MaterialItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314028517084493673, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.2487793
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497881256965423200, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.0164795
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d54b9ffa1ff021348bf0d284e13cd157, type: 3}

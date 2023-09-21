@@ -25,7 +25,13 @@ public class CreatureController : BaseController
         }
     }
     private Collider2D _offset;
-    public CreatureData Data { get; set; }
+    public virtual int PrefabId { get; set; }
+    public virtual float Damage { get; set; }
+    public virtual float MaxHp { get; set; }
+    public virtual float Hp { get; set; }
+    public virtual float Speed { get; set; }
+    public virtual float Exp { get; set; }
+
 
     protected Animator _animator;
     public virtual SkillBook Skills { get; set; }
@@ -45,13 +51,13 @@ public class CreatureController : BaseController
 
     public virtual void OnDamaged(BaseController attacker, float damage)
     {
-        Data.Hp -= (int)damage;
+        Hp -= (int)damage;
         Status = Define.CreatureState.Hit;
 
         Managers.Object.ShowDamageFont(CenterPosition, damage, 0, transform);
-        if (Data.Hp <= 0)
+        if (Hp <= 0)
         {
-            Data.Hp = 0;
+            Hp = 0;
             OnDead();
         }
     }

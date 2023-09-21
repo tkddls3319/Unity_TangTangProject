@@ -47,7 +47,7 @@ public class Utils
         Vector2 spawnPosition = characterPosition + new Vector2(xDist, yDist);
 
         // 맵 경계를 벗어나는 경우 타원 모양으로 생성
-        float size = /*Managers.Game.CurrentMap.MapSize.x*/10 * 0.5f;
+        float size = /*Managers.Game.CurrentMap.MapSize.x*/5 * 0.5f;
         if (Mathf.Abs(spawnPosition.x) > size || Mathf.Abs(spawnPosition.y) > size)
         {
             float ellipseFactorX = Mathf.Lerp(1f, 0.5f, Mathf.Abs(characterPosition.x) / size);
@@ -64,7 +64,5 @@ public class Utils
         }
 
         return spawnPosition;
-
     }
-
 }

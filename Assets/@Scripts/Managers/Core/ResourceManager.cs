@@ -16,7 +16,7 @@ public class ResourceManager
 
         return null;
     }
-    public GameObject Instantiate(string key, Transform parent = null)
+    public GameObject Instantiate(string key, Transform parent = null, bool pooling = false)
     {
         GameObject prefab = Load<GameObject>(key);
 
@@ -25,9 +25,8 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {key}");
             return null;
         }
-
-        Poolable pool = prefab.GetComponent<Poolable>();
-        if (pool != null)
+       
+        if (pooling)
             return Managers.Pool.Pop(prefab);
 
         GameObject go = GameObject.Instantiate(prefab, parent);
