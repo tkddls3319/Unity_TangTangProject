@@ -140,11 +140,11 @@ public class GameManager
         switch (UnityEngine.Random.Range(0, 3))
         {
             case 0:
-                return new ExpInfo(ExpInfo.GemType.Bronze, new Vector3(0.25f, 0.25f, 0.25f));
+                return new ExpInfo(ExpInfo.GemType.Bronze, new Vector3(0.15f, 0.15f, 0.15f));
             case 1:
-                return new ExpInfo(ExpInfo.GemType.Silver, new Vector3(0.25f, 0.25f, 0.25f));
+                return new ExpInfo(ExpInfo.GemType.Silver, new Vector3(0.15f, 0.15f, 0.15f));
             case 2:
-                return new ExpInfo(ExpInfo.GemType.Gold, new Vector3(0.35f, 0.35f, 0.35f));
+                return new ExpInfo(ExpInfo.GemType.Gold, new Vector3(0.20f, 0.20f, 0.20f));
         }
         return null;
     }
