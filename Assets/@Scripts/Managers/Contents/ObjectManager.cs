@@ -69,8 +69,7 @@ public class ObjectManager
             SkillData data = null;
             if (Managers.Data.SkillDatas.TryGetValue(id, out data) == false)
                 return null;
-
-            GameObject go = Managers.Resource.Instantiate("Skill", pooling: true);
+            GameObject go = Managers.Resource.Instantiate(data.Name, pooling: true);
             go.transform.position = pos;
 
             ProjectileController pc = go.GetOrAddComponent<ProjectileController>();

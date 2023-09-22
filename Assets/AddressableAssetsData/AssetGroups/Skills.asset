@@ -22,18 +22,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
-  - m_GUID: 339f8f7df97d3c848b94a752a2403145
-    m_Address: EnergyBolt
+  - m_GUID: cb9bc364a3470d544bfbc8227a32c53d
+    m_Address: EnergyWave
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
-  - m_GUID: dbc5e73534521b340a98eb99a2c7e632
-    m_Address: ElectricBolt
+  - m_GUID: b299165b5a84aa5418b9a21752fb6cad
+    m_Address: TowEnergyShot
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
   - m_GUID: ab6831f0594732d418c5778cec820d8c
     m_Address: Skill
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 339f8f7df97d3c848b94a752a2403145
+    m_Address: EnergyBolt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 30b170445ff52ed4faa331558cc260b8
+    m_Address: EnergyBolt2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: dbc5e73534521b340a98eb99a2c7e632
+    m_Address: ElectricBolt
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab

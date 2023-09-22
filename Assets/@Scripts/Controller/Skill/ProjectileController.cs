@@ -33,24 +33,29 @@ public class ProjectileController : SkillBase
         AnimatorController animator = Managers.Resource.Load<AnimatorController>("SkillAnimator.controller");
         Animator anim = GetComponent<Animator>();
 
-        switch (skill.SkillType)    
+        switch (skill.SkillType)
         {
             case Define.SkillType.EnergyBolt:
-                StartCoroutine( CoEnergyBolt());
+                StartCoroutine(CoEnergyBolt());
+                GetComponent<SpriteRenderer>().color = new Color(0 / 255f, 0 / 255f, 0 / 255f, 255 / 255f);
                 break;
             case Define.SkillType.EnergyBolt2:
+                GetComponent<SpriteRenderer>().color = new Color(229 / 255f, 79 / 255f, 49 / 255f, 255 / 255f);
                 StartCoroutine(CoEnergyBolt2());
                 break;
             case Define.SkillType.ElectricBolt:
+                GetComponent<SpriteRenderer>().color = new Color(208 / 255f, 255 / 255f, 0 / 255f, 255 / 255f);
+
                 StartCoroutine(CoElectricBolt());
                 break;
             case Define.SkillType.EnergyWave:
+                GetComponent<SpriteRenderer>().color = new Color(255 / 255f, 0 / 255f, 151 / 255f, 255 / 255f);
                 StartCoroutine(CoEnergyWave());
                 break;
             case Define.SkillType.TowEnergyShot:
                 StartCoroutine(CoTowEnergyShot());
                 break;
-        } 
+        }
 
         anim.runtimeAnimatorController = animator;
         anim.Play(SkillData.AnimationName);
@@ -128,7 +133,7 @@ public class ProjectileController : SkillBase
         if (this.IsMyNotNullActive() == false)
             return;
 
-      
+
 
         switch (Skill.SkillType)
         {

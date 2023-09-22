@@ -26,7 +26,7 @@ public class DataManager
             new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 40.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));
         SkillDatas.Add(2, new SkillData(id: 2, name: "", shotCount: 2, speed: 50.0f, scala: 1, shotTime: 0.2f, coolTime: 0.5f, lifeTime: 5.0f, animationName: "SkillIcon_03Ani",
             new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 50.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));
-        SkillDatas.Add(3, new SkillData(id: 3, name: "ElectricBolt", shotCount: 2, speed: 5.0f, scala: 2, shotTime: 0.2f, coolTime: 1.5f, lifeTime: 10.0f, animationName: "ElectricBoltAni",
+        SkillDatas.Add(3, new SkillData(id: 3, name: "ElectricBolt", shotCount: 2, speed: 3.0f, scala: 2, shotTime: 0.2f, coolTime: 1.5f, lifeTime: 10.0f, animationName: "ElectricBoltAni",
             new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 3.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));//ElectricBolt
         SkillDatas.Add(4, new SkillData(id: 4, name: "", shotCount: 2, speed: 50.0f, scala: 1, shotTime: 0.2f, coolTime: 0.5f, lifeTime: 5.0f, animationName: "SkillIcon_05Ani",
             new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 70.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));
@@ -37,7 +37,7 @@ public class DataManager
         SkillDatas.Add(7, new SkillData(id: 7, name: "", shotCount: 2, speed: 50.0f, scala: 1, shotTime: 0.2f, coolTime: 0.5f, lifeTime: 5.0f, animationName: "SkillIcon_08Ani", new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 100.0f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));
         SkillDatas.Add(8, new SkillData(id: 8, name: "TowEnergyShot", shotCount: 1, speed: 1.0f, scala: 3, shotTime: 0.5f, coolTime: 1.5f, lifeTime: 0.5f, animationName: "TowEnergyShot",
             new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 0.5f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));
-        SkillDatas.Add(9, new SkillData(id: 9, name: "EnergyWave", shotCount: 4, speed: 5.0f, scala: 1, shotTime: 0.05f, coolTime: 2.0f, lifeTime: 5.0f, animationName: "EnergyWave",
+        SkillDatas.Add(9, new SkillData(id: 9, name: "EnergyWave", shotCount: 4, speed: 1.0f, scala: 1, shotTime: 0.05f, coolTime: 2.0f, lifeTime: 5.0f, animationName: "EnergyWave",
             new Dictionary<int, SkillInfo>() { { 1, new SkillInfo(level: 1, damage: 0.5f) }, { 2, new SkillInfo(level: 2, damage: 1.0f) } }));
 
         #endregion

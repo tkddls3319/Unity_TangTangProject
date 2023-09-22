@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 93918290c35c6f047ba876278d5d6640, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,4 +157,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b4cd0e3c89f9a42a39527ebe7c8f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillData:
+    Id: 0
+    Name: 
+    ShotCount: 0
+    Speed: 0
+    Scala: 0
+    ShotTime: 0
+    CoolTime: 0
+    LifeTime: 0
+    AnimationName: 
   Skill: {fileID: 0}
