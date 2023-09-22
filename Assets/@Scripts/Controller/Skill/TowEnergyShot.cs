@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class ElectricBolt : RepeatSkill
+public class TowEnergyShot : RepeatSkill
 {
     private void Awake()
     {
         //todo : 타입정의 다시
-        SkillType = Define.SkillType.ElectricBolt;
+        SkillType = Define.SkillType.TowEnergyShot;
     }
 
     protected override void DoSkillJob()
@@ -25,9 +25,7 @@ public class ElectricBolt : RepeatSkill
 
             for (int i = 0; i < targets.Count; i++)
             {
-                Vector3 dir = Managers.Game.Player.PlayerDirection;
-                dir = Quaternion.AngleAxis((45 + 45 * i) * -1, Vector3.forward) * dir;
-
+                Vector3 dir = (targets[i].CenterPosition - Managers.Game.Player.CenterPosition).normalized;
                 Vector3 startPos = Managers.Game.Player.CenterPosition;
 
                 GenerateProjectile(Owner, startPos, dir, targets[i].CenterPosition, this);

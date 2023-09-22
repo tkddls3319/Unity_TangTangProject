@@ -6,7 +6,6 @@ public class EnergyBolt : RepeatSkill
 {
     private void Awake()
     {
-        //todo : 타입정의 다시
         SkillType = Define.SkillType.EnergyBolt;
     }
 
@@ -18,7 +17,7 @@ public class EnergyBolt : RepeatSkill
     {
         if(Managers.Game.Player != null)
         {
-            List<MonsterController> targets = Managers.Object.GetNearsMonster();
+            List<MonsterController> targets = Managers.Object.GetNearsMonster(SkillData.ShotCount);
             if(targets == null)
                 yield break;
 
@@ -29,7 +28,7 @@ public class EnergyBolt : RepeatSkill
 
                 GenerateProjectile(Owner, startPos, dir, target.CenterPosition, this);
 
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(SkillData.ShotTime);
             }
         }
     }

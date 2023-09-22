@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawningPool : MonoBehaviour
 {
-    float _monsterInterval = 0.5f;
-    int _maxMonsterCount = 100;
+    float _monsterInterval = 0.1f;
+    int _maxMonsterCount = 1000;
     Coroutine _coUpdateSpaningPool;
     GameManager _game;
     public void StartSpawn()

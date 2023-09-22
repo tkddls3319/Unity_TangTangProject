@@ -53,18 +53,10 @@ public static class Define
     public enum SkillType
     {
         EnergyBolt = 0,
+        EnergyBolt2 =1,
         ElectricBolt = 3,
-        Charged,
-        Crossed,
-        Hits1,
-        Hits2,
-        Hits3,
-        Hits4,
-        Hits5,
-        Hits6,
-        Pulse,
-        Spark,
-        WaveForm,
+        TowEnergyShot = 8,
+        EnergyWave = 9,
     }
     public enum CreatureState
     {

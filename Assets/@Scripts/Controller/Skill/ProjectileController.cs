@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AdaptivePerformance.Provider;
 using UnityEngine.UIElements;
 
 public class ProjectileController : SkillBase
 {
-    CreatureController _master;
     public SkillBase Skill;
     Vector2 _spawnPos;
     Vector3 _moveDir = Vector3.zero;
@@ -22,7 +22,7 @@ public class ProjectileController : SkillBase
     }
     public void SetInfo(CreatureController owner, Vector3 startPos, Vector3 moveDir, Vector3 targetPos, SkillBase skill)
     {
-        _master = owner;
+        Owner = owner;
         Skill = skill;
         SkillData = skill.SkillData;
         _moveDir = moveDir;
@@ -30,7 +30,7 @@ public class ProjectileController : SkillBase
         _target = targetPos;
         gameObject.transform.localScale = Vector3.one * Skill.SkillData.Scala;
 
-        AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{SkillData.AnimatorName}");
+        AnimatorController animator = Managers.Resource.Load<AnimatorController>("SkillAnimator.controller");
         Animator anim = GetComponent<Animator>();
 
         switch (skill.SkillType)    
@@ -38,9 +38,17 @@ public class ProjectileController : SkillBase
             case Define.SkillType.EnergyBolt:
                 StartCoroutine( CoEnergyBolt());
                 break;
-
+            case Define.SkillType.EnergyBolt2:
+                StartCoroutine(CoEnergyBolt2());
+                break;
             case Define.SkillType.ElectricBolt:
                 StartCoroutine(CoElectricBolt());
+                break;
+            case Define.SkillType.EnergyWave:
+                StartCoroutine(CoEnergyWave());
+                break;
+            case Define.SkillType.TowEnergyShot:
+                StartCoroutine(CoTowEnergyShot());
                 break;
         } 
 
@@ -63,12 +71,44 @@ public class ProjectileController : SkillBase
             yield return new WaitForFixedUpdate();
         }
     }
+    IEnumerator CoEnergyBolt2()
+    {
+        while (true)
+        {
+            Vector3 nextPos = Vector3.Slerp(transform.position, _target, Skill.SkillData.Speed * Time.deltaTime);
+            GetComponent<Rigidbody2D>().MovePosition(nextPos);
+            yield return new WaitForFixedUpdate();
+        }
+    }
     IEnumerator CoElectricBolt()
     {
         while (true)
         {
             Vector3 nextPos = transform.position + _moveDir * Skill.SkillData.Speed * Time.deltaTime;
             GetComponent<Rigidbody2D>().MovePosition(nextPos);
+            yield return new WaitForFixedUpdate();
+        }
+    }
+    IEnumerator CoEnergyWave()
+    {
+        while (true)
+        {
+            Vector3 nextPos = transform.position + _moveDir * Skill.SkillData.Speed * Time.deltaTime;
+            GetComponent<Rigidbody2D>().MovePosition(nextPos);
+
+            float angle = Mathf.Atan2(_moveDir.y, _moveDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+    IEnumerator CoTowEnergyShot()
+    {
+        while (true)
+        {
+            GetComponent<Rigidbody2D>().MovePosition(Owner.transform.position + (_moveDir * 0.2f));
+            float angle = Mathf.Atan2(_moveDir.y, _moveDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
             yield return new WaitForFixedUpdate();
         }
     }
@@ -88,7 +128,33 @@ public class ProjectileController : SkillBase
         if (this.IsMyNotNullActive() == false)
             return;
 
-        mc.OnDamaged(_master, Skill.SkillData.SkillInfos[Skill.Level].Damage * _master.Damage);
-        Managers.Object.Dspawn(this);
+      
+
+        switch (Skill.SkillType)
+        {
+            case Define.SkillType.EnergyBolt:
+                Managers.Object.Dspawn(this);
+                break;
+            case Define.SkillType.EnergyBolt2:
+                Managers.Object.Dspawn(this);
+                break;
+            case Define.SkillType.ElectricBolt:
+                break;
+            case Define.SkillType.EnergyWave:
+                break;
+            case Define.SkillType.TowEnergyShot:
+                break;
+        }
+
+        mc.OnDamaged(Owner, Skill.SkillData.SkillInfos[Skill.Level].Damage * Owner.Damage);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        MonsterController mc = collision.gameObject.GetComponent<MonsterController>();
+        if (mc.IsMyNotNullActive() == false)
+            return;
+
+        if (this.IsMyNotNullActive() == false)
+            return;
     }
 }

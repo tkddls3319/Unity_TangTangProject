@@ -10,14 +10,13 @@ public class PlayerController : CreatureController
 {
    public  Vector2 MoveDir = Vector2.zero;
 
-    Transform _indicator;
-    Transform _fireSocket;
+    public Transform Indicator { get; set; }
+    public Transform FireSocket { get; set; }
 
     public event Action OnPlayerDataUpdated;
 
-    public Vector3 PlayerCenterPos { get { return _indicator.transform.position; } }
-
-    public Define.SkillType SkillID { get; set; } = Define.SkillType.Hits1;
+    public Vector3 PlayerCenterPos { get { return Indicator.transform.position; } }
+    public Vector3 PlayerDirection { get { return (FireSocket.transform.position - PlayerCenterPos).normalized; } }
 
     public float _ItemCollecRange { get; } = 1.0f;
 
@@ -114,8 +113,9 @@ public class PlayerController : CreatureController
     private void Start()
     {
         #region Skill µî·Ï
-        Skills.AddSkill(Define.SkillType.EnergyBolt);
-        Skills.AddSkill(Define.SkillType.ElectricBolt);
+       //Skills.AddSkill(Define.SkillType.EnergyBolt2);
+        foreach (Define.SkillType enumItem in Enum.GetValues(typeof(Define.SkillType)))
+            Skills.AddSkill(enumItem);
         #endregion
     }
     public override bool Init()
@@ -126,8 +126,9 @@ public class PlayerController : CreatureController
 
         ObjectType = Define.ObjectType.Player;
 
-        _indicator = Utils.FindChild<Transform>(gameObject, "Indicator");
-        _fireSocket = Utils.FindChild<Transform>(_indicator.gameObject, "FireSocket");
+        Indicator = Utils.FindChild<Transform>(gameObject, "Indicator");
+        FireSocket = Utils.FindChild<Transform>(Indicator.gameObject, "FireSocket");
+
 
       
         //StartProjectTile();
@@ -208,7 +209,7 @@ public class PlayerController : CreatureController
 
         if (MoveDir != Vector2.zero)
         {
-            _indicator.eulerAngles = new Vector3(0, 0, MathF.Atan2(-dir.x, dir.y) * 180 / MathF.PI);
+            Indicator.eulerAngles = new Vector3(0, 0, MathF.Atan2(-dir.x, dir.y) * 180 / MathF.PI);
         }
         else
         {

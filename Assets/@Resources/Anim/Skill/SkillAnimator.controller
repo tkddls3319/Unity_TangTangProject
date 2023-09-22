@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkillIcon_09Ani
+  m_Name: TowEnergyShot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -266,7 +266,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkillIcon_02Ani
+  m_Name: EnergyBolt2Ani
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -370,7 +370,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkillIcon_10Ani
+  m_Name: EnergyWave
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

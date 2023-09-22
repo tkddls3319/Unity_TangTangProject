@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,7 +17,7 @@ public class LevelData
         MaxExp = maxExp;
     }
 }
-
+[Serializable]
 public class SkillInfo
 {
     public int Level;
@@ -29,16 +30,17 @@ public class SkillInfo
         Damage = damage;
     }
 }
-
+[Serializable]
 public class SkillData
 {
     public int Id;
     public string Name;
+    public int ShotCount;
     public float Speed;
     public float Scala;
+    public float ShotTime;
     public float CoolTime;
     public float LifeTime;
-    public string AnimatorName;
     public string AnimationName;
     public Dictionary<int, SkillInfo> SkillInfos;
 
@@ -46,15 +48,16 @@ public class SkillData
     {
     }
 
-    public SkillData(int id, string name,  float speed, float scala, float coolTime, float lifeTime, string animatorName, string animationName, Dictionary<int, SkillInfo> skillInfos)
+    public SkillData(int id, string name, int shotCount,  float speed, float scala, float shotTime, float coolTime, float lifeTime, string animationName, Dictionary<int, SkillInfo> skillInfos)
     {
         Id = id;
         Name = name;
+        ShotCount = shotCount;
         Speed = speed;
         Scala = scala;
+        ShotTime = shotTime;
         CoolTime = coolTime;
         LifeTime = lifeTime;
-        AnimatorName = animatorName;
         AnimationName = animationName;
         SkillInfos = skillInfos;
     }
@@ -62,14 +65,15 @@ public class SkillData
     public SkillData DeepCopy()
     {
         SkillData newCopy = new SkillData();
-        newCopy.Name = Name;
         newCopy.Id = Id;
+        newCopy.Name = Name;
+        newCopy.ShotCount = ShotCount;
         newCopy.SkillInfos = SkillInfos;
         newCopy.Speed = Speed;
         newCopy.Scala = Scala;
+        newCopy.ShotTime = ShotTime;
         newCopy.CoolTime = CoolTime;
         newCopy.LifeTime = LifeTime;
-        newCopy.AnimatorName = AnimatorName;
         newCopy.AnimationName = AnimationName;
         return newCopy;
     }

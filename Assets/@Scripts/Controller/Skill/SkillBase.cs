@@ -15,6 +15,7 @@ public class SkillBase : BaseController
         set { level = value; }
     }
 
+    [SerializeField]
     public SkillData _skillData;
     public SkillData SkillData
     {

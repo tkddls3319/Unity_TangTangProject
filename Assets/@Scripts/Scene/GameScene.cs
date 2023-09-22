@@ -25,7 +25,7 @@ public class GameScene : BaseScene
     {
         Managers.Game.TimeRemaining -= Time.deltaTime;
 
-        if (Managers.Game.TimeRemaining < 55)// 5초에 한번씩
+        if (Managers.Game.TimeRemaining < 30)// 5초에 한번씩
         {
             SpawnWaveReward();
         }

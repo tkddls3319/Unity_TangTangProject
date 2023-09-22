@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class ElectricBolt : RepeatSkill
+public class EnergyWave : RepeatSkill
 {
     private void Awake()
     {
-        //todo : 타입정의 다시
-        SkillType = Define.SkillType.ElectricBolt;
+        SkillType = Define.SkillType.EnergyWave;
     }
 
     protected override void DoSkillJob()
@@ -23,14 +21,12 @@ public class ElectricBolt : RepeatSkill
             if (targets == null)
                 yield break;
 
-            for (int i = 0; i < targets.Count; i++)
+            foreach (MonsterController target in targets)
             {
-                Vector3 dir = Managers.Game.Player.PlayerDirection;
-                dir = Quaternion.AngleAxis((45 + 45 * i) * -1, Vector3.forward) * dir;
-
+                Vector3 dir = (target.CenterPosition - Managers.Game.Player.CenterPosition).normalized;
                 Vector3 startPos = Managers.Game.Player.CenterPosition;
 
-                GenerateProjectile(Owner, startPos, dir, targets[i].CenterPosition, this);
+                GenerateProjectile(Owner, startPos, dir, target.CenterPosition, this);
 
                 yield return new WaitForSeconds(SkillData.ShotTime);
             }
