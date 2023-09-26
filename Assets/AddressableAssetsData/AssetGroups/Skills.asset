@@ -52,6 +52,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - LoadPrefab
+  - m_GUID: cd4b2f6fbd271a44187b031a748d035a
+    m_Address: TowEnergyShot.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 15493b36b213ca048826f8a1fd3bcb91
+    m_Address: EnergyWave.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: 53fbd784e37c4bf4e84bc9eb753dd619
+    m_Address: EnergyBolt2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: ce2e5509de3446045a83620d8256f71f
+    m_Address: EnergyBolt.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
+  - m_GUID: a65a50b6179028e4cbc504c91a5d828f
+    m_Address: ElectricBolt.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LoadPrefab
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cf6b4dda2af5c8f4c98864a988628d2b, type: 2}
   m_SchemaSet:

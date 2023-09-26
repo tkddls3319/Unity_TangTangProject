@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Scripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -47,7 +48,7 @@ public class UI_GameScene : UI_Scene
         #endregion
 
         Managers.Game.Player.OnPlayerDataUpdated += OnPlayerDataUpdated;
-
+        Managers.Game.Player.OnPlayerLevelUp += OnPlayerLevelUp;
         return true;
     }
 
@@ -55,10 +56,12 @@ public class UI_GameScene : UI_Scene
     {
         GetObject((int)GameObjects.ExpBar).GetComponent<Slider>().value = Managers.Game.Player.Exp;
         GetTMP_Text((int)Texts.KillValueText).text = $"{Managers.Game.Player.KillCount}";
-        GetTMP_Text((int)Texts.LevelValueText).text = $"{Managers.Game.Player.Level}";
     }
 
-
+    void OnPlayerLevelUp()
+    {
+        Managers.UI.ShowPopupUI<UI_SkillUp>();
+    }
     public void EffectFlash()
     {
         StartCoroutine(CoEffectFlash());

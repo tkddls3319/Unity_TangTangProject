@@ -25,7 +25,7 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {key}");
             return null;
         }
-       
+
         if (pooling)
             return Managers.Pool.Pop(prefab);
 
@@ -49,6 +49,7 @@ public class ResourceManager
     #region Addressable
     public void LoadAllAsync<T>(string label, Action<string, int, int> callBack) where T : Object
     {
+
         var onHandler = Addressables.LoadResourceLocationsAsync(label, typeof(T));
 
         onHandler.Completed += (op) =>
@@ -58,16 +59,29 @@ public class ResourceManager
 
             foreach (var result in op.Result)
             {
-                LoadAsync<T>(result.PrimaryKey, (obj) =>
+                if (result.PrimaryKey.Contains(".sprite"))
                 {
-                    loadCount++;
-                    callBack?.Invoke(result.PrimaryKey, loadCount, totalCount);
-                });
+                    LoadAsync<Sprite>(result.PrimaryKey, (obj) =>
+                    {
+                        loadCount++;
+                        callBack?.Invoke(result.PrimaryKey, loadCount, totalCount);
+                    });
+                }
+                else
+                {
+
+                    LoadAsync<T>(result.PrimaryKey, (obj) =>
+                    {
+                        loadCount++;
+                        callBack?.Invoke(result.PrimaryKey, loadCount, totalCount);
+                    });
+                }
             }
         };
     }
     public void LoadAsync<T>(string key, Action<T> callBack) where T : Object
     {
+
         if (_resources.TryGetValue(key, out Object resource))
         {
             callBack?.Invoke(resource as T);

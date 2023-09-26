@@ -8,7 +8,7 @@ public class SkillBase : BaseController
     public CreatureController Owner { get; set; }
     public Define.SkillType SkillType { get; set; }
 
-    int level = 1;
+    int level = 0;
     public int Level
     {
         get { return level; }
@@ -28,22 +28,29 @@ public class SkillBase : BaseController
             _skillData = value;
         }
     }
-    public virtual void ActivateSkill(int ID)
+    public virtual void ActivateSkill()
     {
-        UpdateSkillData(ID);
+        UpdateSkillData();
     }
 
-    public SkillData UpdateSkillData(int dataId = 0)
+    public SkillData UpdateSkillData()
     {
         SkillData skillData = new SkillData();
 
-        if(Managers.Data.SkillDatas.TryGetValue(dataId, out skillData) == false)
+        if(Managers.Data.SkillDatas.TryGetValue((int)SkillType, out skillData) == false)
             return SkillData;
 
 
         SkillData = skillData.DeepCopy();
 
         return SkillData;
+    }
+    public virtual void OnLevelUp()
+    {
+        if (Level == 0)
+            ActivateSkill();
+        Level++;
+        UpdateSkillData();
     }
 
     protected virtual void GenerateProjectile(CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos, SkillBase skill)

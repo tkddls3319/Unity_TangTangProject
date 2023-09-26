@@ -42,13 +42,14 @@ public class SkillData
     public float CoolTime;
     public float LifeTime;
     public string AnimationName;
+    public string SpriteName;
     public Dictionary<int, SkillInfo> SkillInfos;
 
     public SkillData()
     {
     }
 
-    public SkillData(int id, string name, int shotCount,  float speed, float scala, float shotTime, float coolTime, float lifeTime, string animationName, Dictionary<int, SkillInfo> skillInfos)
+    public SkillData(int id, string name, int shotCount,  float speed, float scala, float shotTime, float coolTime, float lifeTime, string animationName, string spriteName,Dictionary<int, SkillInfo> skillInfos)
     {
         Id = id;
         Name = name;
@@ -59,6 +60,7 @@ public class SkillData
         CoolTime = coolTime;
         LifeTime = lifeTime;
         AnimationName = animationName;
+        SpriteName = spriteName;
         SkillInfos = skillInfos;
     }
 
@@ -74,6 +76,7 @@ public class SkillData
         newCopy.ShotTime = ShotTime;
         newCopy.CoolTime = CoolTime;
         newCopy.LifeTime = LifeTime;
+        newCopy.SpriteName = SpriteName;
         newCopy.AnimationName = AnimationName;
         return newCopy;
     }
