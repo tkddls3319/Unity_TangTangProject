@@ -7,9 +7,7 @@ using UnityEngine;
 
 public class SkillBook : MonoBehaviour
 {
-
     public List<SkillBase> SkillList { get; } = new List<SkillBase>();
-
 
     public void AddSkill(Define.SkillType type)
     {
@@ -19,6 +17,18 @@ public class SkillBook : MonoBehaviour
         skill.Owner = GetComponent<CreatureController>();
         SkillList.Add(skill);
 
-        skill.ActivateSkill((int)type);
+
+        if (type == Define.SkillType.EnergyBolt)
+        {
+            skill.Level = 1;
+            skill.ActivateSkill();
+        }
+    }
+
+    public void LevelUpSkill(Define.SkillType type)
+    {
+        var skill = SkillList.Find(f => f.SkillType == type);
+
+        skill.OnLevelUp();
     }
 }

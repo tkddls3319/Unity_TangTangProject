@@ -14,6 +14,7 @@ public class PlayerController : CreatureController
     public Transform FireSocket { get; set; }
 
     public event Action OnPlayerDataUpdated;
+    public event Action OnPlayerLevelUp;
 
     public Vector3 PlayerCenterPos { get { return Indicator.transform.position; } }
     public Vector3 PlayerDirection { get { return (FireSocket.transform.position - PlayerCenterPos).normalized; } }
@@ -48,7 +49,6 @@ public class PlayerController : CreatureController
         get { return Managers.Game.ContinueInfo.MoveSpeed; }
         set { Managers.Game.ContinueInfo.MoveSpeed = value; }
     }
-
     public int Level
     {
         get { return Managers.Game.ContinueInfo.Level; }
@@ -77,7 +77,6 @@ public class PlayerController : CreatureController
         }
     }
 
-
     public int KillCount
     {
         get { return Managers.Game.ContinueInfo.KillCount; }
@@ -95,14 +94,13 @@ public class PlayerController : CreatureController
         Hp = Data.Hp;
         Speed = Data.Speed;
         Exp = Data.Exp;
-
     }
     public void LevelUp()
     {
+        OnPlayerLevelUp?.Invoke();
+
         Level += 1;
         Managers.Game.ContinueInfo.Exp = 0;
-
-        //스킬 추가
     }
 
     private void OnDestroy()
@@ -113,7 +111,7 @@ public class PlayerController : CreatureController
     private void Start()
     {
         #region Skill 등록
-       //Skills.AddSkill(Define.SkillType.EnergyBolt2);
+       //Skills.AddSkill(Define.SkillType.EnergyBolt);
         foreach (Define.SkillType enumItem in Enum.GetValues(typeof(Define.SkillType)))
             Skills.AddSkill(enumItem);
         #endregion
@@ -128,11 +126,8 @@ public class PlayerController : CreatureController
 
         Indicator = Utils.FindChild<Transform>(gameObject, "Indicator");
         FireSocket = Utils.FindChild<Transform>(Indicator.gameObject, "FireSocket");
-
-
       
         //StartProjectTile();
-
         return true;
     }
 
@@ -222,6 +217,7 @@ public class PlayerController : CreatureController
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+
     }
 
     public override void OnDead()

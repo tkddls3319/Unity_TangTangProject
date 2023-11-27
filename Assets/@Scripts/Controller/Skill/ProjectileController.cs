@@ -24,6 +24,7 @@ public class ProjectileController : SkillBase
     {
         Owner = owner;
         Skill = skill;
+        Level = skill.Level;
         SkillData = skill.SkillData;
         _moveDir = moveDir;
         _spawnPos = startPos;
@@ -133,8 +134,6 @@ public class ProjectileController : SkillBase
         if (this.IsMyNotNullActive() == false)
             return;
 
-
-
         switch (Skill.SkillType)
         {
             case Define.SkillType.EnergyBolt:
@@ -151,7 +150,7 @@ public class ProjectileController : SkillBase
                 break;
         }
 
-        mc.OnDamaged(Owner, Skill.SkillData.SkillInfos[Skill.Level].Damage * Owner.Damage);
+        mc.OnDamaged(Owner, Skill.SkillData.SkillInfos[Level].Damage * Owner.Damage);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

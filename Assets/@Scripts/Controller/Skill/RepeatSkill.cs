@@ -15,9 +15,9 @@ public abstract class RepeatSkill : SkillBase
 
     Coroutine _coStartSkill;
 
-    public override void ActivateSkill(int ID)
+    public override void ActivateSkill()
     {
-        base.ActivateSkill(ID);
+        base.ActivateSkill();
 
         if (_coStartSkill != null)
             StopCoroutine(_coStartSkill);

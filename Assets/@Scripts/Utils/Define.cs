@@ -54,9 +54,9 @@ public static class Define
     {
         EnergyBolt = 0,
         EnergyBolt2 =1,
-        ElectricBolt = 3,
-        TowEnergyShot = 8,
-        EnergyWave = 9,
+        ElectricBolt = 2,
+        TowEnergyShot = 3,
+        EnergyWave = 4,
     }
     public enum CreatureState
     {
