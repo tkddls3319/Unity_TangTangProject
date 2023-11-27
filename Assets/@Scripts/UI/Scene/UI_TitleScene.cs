@@ -56,7 +56,7 @@ public class UI_TitleScene : UI_Scene
                 StartTextAnimation((int)TMP_Texts.StartText);
 
                 //TODO : Å×½ºÆ®
-                Managers.Scene.LoadScene(Define.Scene.LobbyScene);
+                //Managers.Scene.LoadScene(Define.Scene.LobbyScene);
             }
         });
     }
