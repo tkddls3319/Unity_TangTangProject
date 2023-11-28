@@ -19,6 +19,7 @@ public class UI_Base : MonoBehaviour
         if (_init)
             return false;
 
+        Screen.SetResolution(800, 600, false);
 
         _init = true;
         return true;

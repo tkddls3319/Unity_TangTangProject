@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class MonsterController : CreatureController
@@ -56,8 +55,8 @@ public class MonsterController : CreatureController
         Exp = Data.Exp;
         //Sprite spr = Managers.Resource.Load<Sprite>($"{Data.CreatureSprite}");
         //GetComponent<SpriteRenderer>().sprite = spr;
-        AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{Data.CreatureAnimator}");
-        GetComponent<Animator>().runtimeAnimatorController = animator;
+        //AnimatorController animator = Managers.Resource.Load<AnimatorController>($"{Data.CreatureAnimator}");
+        //GetComponent<Animator>().runtimeAnimatorController = animator;
         Init();
     }
     public override void OnDead()

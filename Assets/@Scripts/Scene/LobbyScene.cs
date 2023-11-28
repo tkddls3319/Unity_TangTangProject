@@ -10,7 +10,9 @@ public class LobbyScene : BaseScene
 
         SceneType = Define.Scene.LobbyScene;
 
+#if UNITY_EDITOR
         LoadStage();
+#endif
     }
 
     void LoadStage()

@@ -76,7 +76,8 @@ public class UIManager
 
 
         GameObject go = Managers.Resource.Instantiate(name);
-
+        Debug.Log(go.name);
+        Debug.Log(name);
         T sceneUI = go.GetOrAddComponent<T>();
         SceneUI = sceneUI;
     }

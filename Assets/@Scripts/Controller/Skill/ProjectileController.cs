@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AdaptivePerformance.Provider;
 using UnityEngine.UIElements;
@@ -31,7 +29,7 @@ public class ProjectileController : SkillBase
         _target = targetPos;
         gameObject.transform.localScale = Vector3.one * Skill.SkillData.Scala;
 
-        AnimatorController animator = Managers.Resource.Load<AnimatorController>("SkillAnimator.controller");
+        //AnimatorController animator = Managers.Resource.Load<AnimatorController>("SkillAnimator.controller");
         Animator anim = GetComponent<Animator>();
 
         switch (skill.SkillType)
@@ -58,7 +56,7 @@ public class ProjectileController : SkillBase
                 break;
         }
 
-        anim.runtimeAnimatorController = animator;
+        //anim.runtimeAnimatorController = animator;
         anim.Play(SkillData.AnimationName);
 
         StartCoroutine(CoDestroy(Skill.SkillData.LifeTime));
