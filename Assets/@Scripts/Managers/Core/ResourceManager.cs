@@ -59,6 +59,7 @@ public class ResourceManager
 
             foreach (var result in op.Result)
             {
+                Debug.Log(result.PrimaryKey);
                 if (result.PrimaryKey.Contains(".sprite"))
                 {
                     LoadAsync<Sprite>(result.PrimaryKey, (obj) =>
